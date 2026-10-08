@@ -1,0 +1,26 @@
+,
+,Preamble
+,
+,"This simulation file is based on the paper ""Welfare Reform in European Countries: A Microsimulation Analysis"" by Herwig Immervoll (OECD, IZA), Henrik Jacobsen Kleven (University of Copenhagen), Claus Thustrup Kreiner (University of Copenhagen) and Emmanuel Saez (UC Berkeley)"
+,
+,Publication of any results based on this simulation file must cite the above paper.
+,
+,"© Copyright October 2005, Herwig Immervoll, Henrik Jacobsen Kleven, Claus Thustrup Kreiner and Emmanuel Saez"
+,
+,Short description of contents
+,
+,"The worksheets ""Aggregate Run"" and ""Disaggregate Run"" estimate the welfare and distributional impact of two types of tax/transfer reform in the 15 (pre-enlargement) member countries of the European Union. The worksheet ""Tax-Benefit Data"" contains effective tax rates on labor supply along the the intensive and extensive margins for the 15 countries. The tax-benefit data is from 1998 and is calculated using the EUROMOD model. A detailed desription of data and method is provided in the above paper."
+,
+,"The simulated reforms are revenue neutral and financed by an overall and uniform increase in marginal tax rates on earnings. The first reform distributes the additional tax revenue uniformly to everybody (demogrant policy) while the second reform distributes tax proceeds uniformly to workers only (working poor policy). For these two redistributional policies, the simulation worksheets calculate the impact on economic efficiency, the trade-off between equity and efficiency, and the number of individuals gaining from the reforms."
+,
+,"The efficiency effect measures the impact on aggregate welfare in proportion to the mechanical increase in tax revenue from the reform. The impact on efficiency will in most cases be negative reflecting that a fraction of the mechanical tax revenue collections vanishes due to behavioral responses to taxation, thereby reducing the amount of money which may be returned in transfers."
+,
+,The trade-off between equity and efficiency measures the welfare cost to the rich from the transfer of one additional Euro to the poor (or the working poor).
+,
+,How to run the simulations
+,
+,"To run the simulations, you need to enter your preferred labor supply elasticity scenario. There are two ways to do this. In the worksheet ""Aggregate Run"" you enter intensive and extensive labor supply elasticities for each decile of the earnings distribution. In the worksheet ""Disaggregate Run"" you may set different elasticities for different demographic groups in each decile. The results of the simulations are displayed below the table with the elasticities."
+,
+,Details of the simulations
+,
+,The details of the simulations are hiden in a number of worksheets (one for each country). It is possible to unhide these sheets by choosing Format ® Sheet ® Unhide. All cells — except those used to enter the labor supply elasticity scenario — are protected in order to avoid user mistakes. To unprotect these cells choose Tools ® Protection ® Unprotect sheet ® type the password euromod.

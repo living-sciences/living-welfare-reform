@@ -1,0 +1,67 @@
+{
+  "instruction_summary": "Study B (002-theory-update): write the 'Theory, updated to 2026' section of the IKKS (2007) welfare-reform paper as a model, using Study A's 2009-2026 EUROMOD rates - inverse-optimum reading (Saez 2002), elasticity frontier by era with literature overlay, one minimal amendment + one rejected alternative, a linearisation consistency check, and a Belgium cost-per-job external validation. CPU only, no EUROMOD, no fetches.",
+  "completed": true,
+  "steps": [
+    {"description": "Rebuilt CPU venv (numpy/pandas/scipy/xlrd/matplotlib); linked EUROMOD.xls and shared-data; copied welfare_core.py, fixed_inputs.py; imported welfare_layer.py from 002-living-update-cont (read-only)", "command": "uv venv /workspace/.venv && uv pip install numpy pandas scipy xlrd matplotlib", "exit_code": 0, "outputs": ["workspace/"]},
+    {"description": "Item 1: inverse-optimum g_d (Saez 2002) for 1998 + 2009-2026, all 14 V countries; DK 1998 reproduction + agreement table vs 001 Pareto flags [CONSISTENCY CHECK]", "command": "python run_item1.py && python run_item1_sens.py", "exit_code": 0, "outputs": ["results/g_by_decile.csv", "results/item1_agreement.csv", "results/item1_sensitivity.csv", "results/item1_summary.json"]},
+    {"description": "Item 2: elasticity frontier by era in (eta_avg,eps) space; per-country survival vs literature elasticities", "command": "python frontier.py", "exit_code": 0, "outputs": ["results/frontier_by_era.csv", "results/frontier_survival.csv"]},
+    {"description": "Item 3: minimal amendment - reallocate eta onto secondary earners/lone parents (groups 2,7-10), aggregate held fixed; recompute ranking", "command": "python run_item3.py", "exit_code": 0, "outputs": ["results/item3_concentration.csv"]},
+    {"description": "Item 4: linearisation accuracy check [CONSISTENCY CHECK] - fit d_PTR->d_Psi_w on 2009-2017, predict 2018-2026", "command": "python run_item4.py", "exit_code": 0, "outputs": ["results/item4_linearisation.json"]},
+    {"description": "Item 4b: Belgium external validation - model cost per participant/FTE of a marginal lump-sum in-work transfer vs de Mahieu (2021)", "command": "python run_item4b.py", "exit_code": 0, "outputs": ["results/external_check_be.csv", "results/item4b_summary.json"]},
+    {"description": "Item 5: calibration table (1998 vs 2026 parameters/moments with sources)", "command": "python run_calibration.py", "exit_code": 0, "outputs": ["results/calibration_table.csv", "results/calibration_summary.json"]},
+    {"description": "Deliverable figures (frontier by era + supporting critical-eta/g figure), PNG+PDF", "command": "python make_figure.py", "exit_code": 0, "outputs": ["results/fig1_elasticity_frontier.png", "results/fig1_elasticity_frontier.pdf", "results/fig2_critical_eta_and_g.png", "results/fig2_critical_eta_and_g.pdf"]},
+    {"description": "Wrote theory_update.md, report.md, result_card.json, followup_summary.json", "command": "-", "exit_code": 0, "outputs": ["results/theory_update.md", "report.md", "result_card.json", "followup_summary.json"]}
+  ],
+  "key_results": {
+    "DK_1998_inverse_optimum_reproduced": "decile-1 g = -0.73 < 0 in a working-poor-gainer decile; D_w=-1.654 matches table2a.csv",
+    "only_DK_Pareto_1998_g_iff": true,
+    "g_iff_vs_001_flag_agreement_stable_pct": 89.9,
+    "g_iff_vs_001_flag_agreement_all_pct": 72.5,
+    "median_critical_eta_Psi_w_lt_Psi_d_2009": 0.22,
+    "median_critical_eta_Psi_w_lt_Psi_d_2026": 0.13,
+    "inwork_cheaper_2026_at_Kleven_USEITC": "0 of 14",
+    "inwork_cheaper_2026_at_BartelsShupe": "5 of 14",
+    "inwork_cheaper_2026_at_Chetty": "9 of 14",
+    "amendment_secondary_earners_2026_ranking": "8->7 of 10 stable (one flip: IT); composition not the driver",
+    "rejected_alternative": "Kroft et al. 2020 unemployment/wage channel [PROPOSED] - not calibrable from 001 artefacts",
+    "linearisation_R2_in_2009_2017": 0.57,
+    "linearisation_R2_out_2018_2026": -0.18,
+    "BE_model_cost_per_FTE_kEUR_benchmark": -7.5,
+    "BE_model_cost_per_FTE_kEUR_BartelsShupe": "22.3-30.1",
+    "BE_published_cost_per_FTE_kEUR": "368.5-1660.1",
+    "BE_verdict": "model below published range (self-financing at benchmark eta) - pre-declared expected direction"
+  },
+  "comparison_to_original": [
+    {"quantity": "DK 1998 Pareto (inverse optimum g<0)", "original": "eff_w=+1.654 (Pareto)", "followup": "decile-1 g=-0.73<0, reproduced", "source_file": "run/replication/codebase/results/table2a.csv", "note": "g-iff flags only DK in 1998, matching the paper's strict statement"},
+    {"quantity": "In-work beats demogrant across elasticities (C12)", "original": "14/14 'for a wide range of eta'", "followup": "2026: 0/14 at US-EITC eta~0, 5/14 at EU eta~0.11, 9/14 at Chetty 0.25", "source_file": "run/replication/codebase/results/table2a.csv", "note": "survives mid-range, strengthened post-2017, collapses at US-EITC floor"},
+    {"quantity": "Critical avg elasticity for Psi_w<Psi_d (panel, eps=0.1)", "original": "n/a (paper gives Table-3 criticals only at 1998)", "followup": "0.22 (2009) -> 0.13 (2026)", "source_file": "followup/002-living-update-cont/results/critical_eta_by_year.csv", "note": "in-work dominance now holds at lower elasticities"},
+    {"quantity": "Cost per FTE of marginal in-work transfer, Belgium", "original": "EUR 368.5k-1660.1k", "followup": "-EUR 7.5k (benchmark eta); EUR 22-30k (Bartels-Shupe eta)", "source_file": "de Mahieu 2021 IJM 14(1):43-72 (figures in spec)", "note": "below range, pre-declared direction: lump-sum no phase-out; self-financing at high BE bottom-decile PTRs"}
+  ],
+  "artifacts": [
+    "results/theory_update.md",
+    "results/external_check_be.csv",
+    "results/calibration_table.csv",
+    "results/calibration_summary.json",
+    "results/g_by_decile.csv",
+    "results/item1_agreement.csv",
+    "results/item1_sensitivity.csv",
+    "results/item1_summary.json",
+    "results/frontier_by_era.csv",
+    "results/frontier_survival.csv",
+    "results/item3_concentration.csv",
+    "results/item4_linearisation.json",
+    "results/item4b_summary.json",
+    "results/fig1_elasticity_frontier.png",
+    "results/fig1_elasticity_frontier.pdf",
+    "results/fig2_critical_eta_and_g.png",
+    "results/fig2_critical_eta_and_g.pdf"
+  ],
+  "deviations": [
+    "No new EUROMOD rates by design (spec §11): reuses Study A's rates and code; inherits all its limitations (V4/q=0 headline, Psi-instability at the bottom, gross-basis EL/IT, IE-2021 gap, UK out of scope, 1998->2009 method break).",
+    "Strict g<0 'iff' over-predicts Pareto in 2026 for AT/NL/ES (participation-trap, Psi-unstable); reported as a consistency-check artifact, not a finding.",
+    "Frontier across-era panel is the 5 countries stable in all four eras {FI,FR,EL,IT,SE}; per-country values for all 14 in frontier_survival.csv.",
+    "Linearisation check uses small n (6 fit/7 test) because Psi_w is finite+stable for few country-years; the negative out-of-sample R2 is itself the point.",
+    "Bartels-Shupe eta operationalised as flat 0.11 (mid of 0.08 men/0.14 women) in the frontier survival counts and the BE check; split noted.",
+    "External validation covers Belgium only (the sole study country with a cited behavioural cost-per-job estimate)."
+  ]
+}

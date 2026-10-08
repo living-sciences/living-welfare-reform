@@ -1,0 +1,51 @@
+{
+  "AW_ann_EUR": 46528,
+  "rows": [
+    {
+      "eta": "benchmark",
+      "target": "deciles_1-2",
+      "model_cost_per_participant_kEUR": -3.5,
+      "model_cost_per_FTE_kEUR": -7.5,
+      "pub_participant_kEUR": "121.1-560.7",
+      "pub_FTE_kEUR": "368.5-1660.1",
+      "participant_vs_pub": "below",
+      "FTE_vs_pub": "below"
+    },
+    {
+      "eta": "benchmark",
+      "target": "deciles_1-3",
+      "model_cost_per_participant_kEUR": -2.5,
+      "model_cost_per_FTE_kEUR": -4.7,
+      "pub_participant_kEUR": "121.1-560.7",
+      "pub_FTE_kEUR": "368.5-1660.1",
+      "participant_vs_pub": "below",
+      "FTE_vs_pub": "below"
+    },
+    {
+      "eta": "Bartels-Shupe",
+      "target": "deciles_1-2",
+      "model_cost_per_participant_kEUR": 10.6,
+      "model_cost_per_FTE_kEUR": 22.3,
+      "pub_participant_kEUR": "121.1-560.7",
+      "pub_FTE_kEUR": "368.5-1660.1",
+      "participant_vs_pub": "below",
+      "FTE_vs_pub": "below"
+    },
+    {
+      "eta": "Bartels-Shupe",
+      "target": "deciles_1-3",
+      "model_cost_per_participant_kEUR": 16.0,
+      "model_cost_per_FTE_kEUR": 30.1,
+      "pub_participant_kEUR": "121.1-560.7",
+      "pub_FTE_kEUR": "368.5-1660.1",
+      "participant_vs_pub": "below",
+      "FTE_vs_pub": "below"
+    }
+  ],
+  "published": {
+    "fte_lo": 368.5,
+    "fte_hi": 1660.1,
+    "part_lo": 121.1,
+    "part_hi": 560.7
+  }
+}

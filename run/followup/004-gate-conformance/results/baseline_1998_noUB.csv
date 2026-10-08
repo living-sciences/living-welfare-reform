@@ -1,0 +1,23 @@
+# Paper Table 5(b): "Welfare Effects from Tax Reform when Excluding Unemployment Benefits",
+# Panel (b) "Benchmark scenario without benefits". Immervoll, Kleven, Kreiner & Saez,
+# Economic Journal 117(516), 2007, p.31. Transcribed from paper.pdf page 31 (double-read,
+# transcription-fidelity rule). Efficiency = marginal efficiency cost (negative = loss);
+# Psi = trade-off ratio (loss of losers / gains of gainers). This is the same-definition
+# (no-UB / V4) 1998 baseline. Country codes are the study's ISO-2; paper used GE/GR/IR/SP/SW.
+# UK is transcribed for fidelity but is NEVER included in the baseline comparison set (spec rule 1).
+country,country_code,eff_demogrant,Psi_d,eff_workingpoor,Psi_w
+Austria,AT,-0.36,2.85,-0.09,1.56
+Belgium,BE,-0.52,4.03,-0.18,2.41
+Denmark,DK,-0.73,15.11,0.20,0.36
+Finland,FI,-0.51,4.93,-0.22,5.43
+France,FR,-0.41,3.18,-0.05,1.23
+Germany,DE,-0.48,4.14,-0.13,1.95
+Greece,EL,-0.20,1.62,-0.06,1.33
+Ireland,IE,-0.38,2.70,0.24,0.41
+Italy,IT,-0.32,2.05,-0.12,1.98
+Luxembourg,LU,-0.25,1.95,-0.07,1.31
+Netherlands,NL,-0.34,2.70,-0.08,1.47
+Portugal,PT,-0.28,2.29,-0.01,1.04
+Spain,ES,-0.15,1.39,-0.03,1.12
+Sweden,SE,-0.57,6.93,-0.18,4.98
+UK,UK,-0.22,1.87,-0.02,1.08

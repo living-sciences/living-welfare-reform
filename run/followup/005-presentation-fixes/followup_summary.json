@@ -1,0 +1,45 @@
+{
+  "instruction_summary": "Close the six presentation items from the audit re-check on study 004's living-update deliverables (corrected trade-off table, completed card_corrections, Fig 1 relabel, Portugal label, two card fields, two wording fixes), recomputing nothing except item 1's table which is assembled from existing CSVs.",
+  "completed": true,
+  "steps": [
+    {"description": "Read the staged audit (immervoll-provenance.md §2-§3, §7), 004's findings/card_corrections/result_card and figure scripts, and the 002/003 result cards for exact stale claims", "command": "cat/read gate-conformance-inputs/immervoll-provenance.md, 004/results/*, 002+003 result_card.json", "exit_code": 0, "outputs": []},
+    {"description": "Rebuilt a minimal venv (matplotlib + numpy only; no EUROMOD) to re-render Fig 1", "command": "uv venv /workspace/.venv && uv pip install matplotlib numpy", "exit_code": 0, "outputs": []},
+    {"description": "Item 1: assembled the 14-country trade-off table from 001's welfare_by_year.csv (2026, V4); item 2: re-issued card_corrections.csv (12 carried + 6 new rows for the 002 and 003 cards); items 3&4: re-rendered Fig 1 with corrected y-axis/title and PT marked contradicted; copied Fig 2", "command": "timeout 3600 python build.py", "exit_code": 0, "outputs": ["results/tradeoff_table_corrected.csv", "results/card_corrections.csv", "results/fig1_gate3b_change_validation.png", "results/fig2_headline_by_cut.png"]},
+    {"description": "Items 1-6 written into the superseding findings.md, result_card.json (items 3-6), fix_log.md, report.md", "command": "Write findings.md / result_card.json / fix_log.md / report.md", "exit_code": 0, "outputs": ["results/findings.md", "result_card.json", "results/fix_log.md", "report.md"]}
+  ],
+  "key_results": {
+    "tradeoff_table": "14 countries; among 10 Psi-stable: Psi_w<Psi_d in 8, Psi_w<1 in 4 (BE,DE,LU,PT); DK beta-step-dependent, ES OECD-contradicted",
+    "card_corrections_rows": "18 (12 carried from 004 + 4 for 002 card + 2 for 003 card)",
+    "fig1_label": "PTR change, single adult at 67% AW, gate 3b (was 'bottom-quintile PTR change')",
+    "portugal": "contradicted by OECD change benchmark (-11.2 vs +16.6 AW67; -9.9 vs +9.4 MINW, opposite sign at both)",
+    "metric1_gate_years": "2010-2025 (was 'gate 3, 2026')",
+    "ptr_metric_baseline": "moved '-1.2 pp all-14' from baseline field to note; baseline = no same-definition 1998 baseline (V4)",
+    "core_hours": "0.48 (001+002 combined)",
+    "audit_citation": "section 2-3 and section 7 (was section 4-5)"
+  },
+  "comparison_to_original": [
+    {"quantity": "Corrected trade-off table", "original": "claimed in 004 findings but file absent", "followup": "results/tradeoff_table_corrected.csv, 14 rows (8/10 Psi_w<Psi_d, 4/10 Psi_w<1)", "source_file": "/workspace/eval/followup/001-living-update/results/welfare_by_year.csv", "note": "assembled, not recomputed; DK beta-step-dependent, ES OECD-contradicted"},
+    {"quantity": "card_corrections.csv rows", "original": "12 (001 card + one 003 row)", "followup": "18 (+4 for 002 card, +2 for 003 card)", "source_file": "/workspace/eval/followup/004-gate-conformance/results/card_corrections.csv", "note": "002 card: 8of10, -3.2pp, DK change-validated, FI/LU/SE V_delta table; 003 card: /14 denominators, 0.22->0.13 headline"},
+    {"quantity": "Fig 1 y-axis / caption", "original": "'bottom-quintile PTR change ... AW67'", "followup": "'PTR change, single adult at 67% AW ... gate 3b'", "source_file": "/workspace/eval/followup/004-gate-conformance/workspace/make_corrections.py", "note": "gate 3b is a hypothetical-household change, not a bottom-quintile rate"},
+    {"quantity": "Portugal gate-3b label", "original": "'fails 3b' (grey)", "followup": "'contradicted by the OECD change benchmark' (orange, with ES & IT)", "source_file": "/workspace/eval/followup/001-living-update/results/gate3b_change.csv", "note": "PT -11.2 vs +16.6 (AW67); -9.9 vs +9.4 (MINW): opposite sign at both levels"},
+    {"quantity": "PTR-change metric baseline field", "original": "'-1.2 pp (all 14, UNVALIDATED)'", "followup": "'no same-definition 1998 baseline (V4 headline)'; -1.2 pp moved to note", "source_file": "/workspace/eval/followup/004-gate-conformance/result_card.json", "note": "V4 headline has no same-definition 1998 baseline"},
+    {"quantity": "Metric 1 gate years", "original": "'(gate 3, 2026)'", "followup": "'(gate 3, 2010-2025)'", "source_file": "/workspace/eval/followup/004-gate-conformance/result_card.json", "note": "gate 3 runs over the 2010-2025 OECD-benchmark window"},
+    {"quantity": "Core-hours", "original": "0.22 (prior studies' logged figure)", "followup": "0.48 (001+002 combined)", "source_file": "/workspace/eval/followup/002-living-update-cont/result_card.json", "note": "002 card reported '0.30 / 0.48'; 0.22 is 001 alone"},
+    {"quantity": "Audit defect-list citation", "original": "'§4-§5 and §7'", "followup": "'§2-§3 and §7'", "source_file": "/workspace/eval/gate-conformance-inputs/immervoll-provenance.md", "note": "defects are in the gate-compliance (§2), card-vs-disk (§3) and checklist (§7) sections"}
+  ],
+  "artifacts": [
+    "/workspace/eval/followup/005-presentation-fixes/results/tradeoff_table_corrected.csv",
+    "/workspace/eval/followup/005-presentation-fixes/results/card_corrections.csv",
+    "/workspace/eval/followup/005-presentation-fixes/results/fig1_gate3b_change_validation.png",
+    "/workspace/eval/followup/005-presentation-fixes/results/fig2_headline_by_cut.png",
+    "/workspace/eval/followup/005-presentation-fixes/results/findings.md",
+    "/workspace/eval/followup/005-presentation-fixes/results/fix_log.md",
+    "/workspace/eval/followup/005-presentation-fixes/result_card.json",
+    "/workspace/eval/followup/005-presentation-fixes/report.md"
+  ],
+  "deviations": [
+    "The staged provenance file (gate-conformance-inputs/immervoll-provenance.md) ends at §7 and has NO appended dated re-check section as the instruction describes; the six items were taken from the instruction itself and cross-checked against §2-§3 and §7 of the staged file.",
+    "Fig 2 (fig2_headline_by_cut.png) was copied unchanged into 005/results so the superseding card is self-contained; it is not one of the six items.",
+    "004's numeric artifacts (baseline_1998_noUB.csv, findings_addendum_003.md, recut_values.json, gate-completion CSVs) were left untouched in 004; 005 supersedes only the three presentation artifacts named in the instruction."
+  ]
+}

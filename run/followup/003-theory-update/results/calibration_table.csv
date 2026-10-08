@@ -1,0 +1,14 @@
+parameter,1998,2026,source
+Intensive (hours) elasticity ε,0.10,0.10,"paper benchmark (IKKS 2007), held fixed"
+Average extensive elasticity η̄,0.20,0.20,"paper benchmark profile [.4,.4,.3,.3,.2,.2,.1,.1,0,0]"
+q regime (UB-receipt weighting),mixed-q (Table A3),V4 / q=0,001 headline rule 3 (7 of 14 no-UB fallbacks)
+Median critical η̄ for Ψ_w=Ψ_d  (panel),0.143,0.127,"this study, Table-3 analogue, ε=0.1, panel {FI,FR,EL,IT,SE}"
+Median critical η̄ for Ψ_w=1  (panel),0.377,0.39,this study
+Median critical η̄ for Pareto  (panel),0.416,0.919,this study
+Median bottom-quintile PTR a_{1-2} (panel),69.7%,49.8%,1998 workbook / 001 rates_deciles (method break at 1998)
+Median emp. share in g<0 deciles (panel),0.0,0.0,"this study, inverse-optimum [CONSISTENCY CHECK]"
+Lit. extensive elasticity: Kleven 2024,—,≈0.00,"Kleven 2024, US EITC participation response"
+Lit.: Bartels & Shupe 2023 (Europe),—,0.08 (men) / 0.14 (women),Bartels & Shupe 2023
+Lit.: Chetty et al. 2011,—,≈0.25 (mostly US),Chetty et al. 2011
+Lit.: Lundberg & Norell 2018,—,0.38,Lundberg & Norell 2018
+"Lit.: Bargain, Orsini & Peichl 2014",—,extensive larger at bottom (qualitative),"Bargain, Orsini & Peichl 2014 (matches benchmark profile shape)"

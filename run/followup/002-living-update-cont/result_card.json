@@ -1,0 +1,65 @@
+{
+  "schema": "sai.followup.result_card/v1",
+  "headline": "Completing the five pre-declared variants 001 had cut: the paper's \"in-work transfer beats demogrant\" ranking is robust — Ψ_w < Ψ_d holds for 8 of 10 stable countries in 2026 and 75–100% of them under every variant (dispersion, hours, children, rent, SSC basis); bottom-quintile PTR fell a median −3.2 pp over 2009→2026.",
+  "status": "completed",
+  "metrics": [
+    {"label": "2026 countries: in-work transfer cheaper (Ψ_w < Ψ_d)", "value": "8 of 10 stable",
+     "baseline": "14 of 14", "baseline_label": "paper / run/replication table2a.csv",
+     "note": "flips to demogrant only in IE, SE; V4/q=0 regime"},
+    {"label": "Ranking robustness across the 5 variants (2026)", "value": "7–8 of ≤10 (never flips)",
+     "baseline": "not tested in paper", "baseline_label": "new in this continuation",
+     "note": "V3 dispersion identical to headline (8/10); SSC-inversion identical to headline (6/8)"},
+    {"label": "Median bottom-quintile PTR change 2009→2026 (V_Δ)", "value": "−3.24 pp",
+     "baseline": "— (no same-definition 1998 baseline under q=0)", "baseline_label": "headline_scalars.json",
+     "note": "Denmark −24.3 pp is the largest fall; change-validated at gate 3b"},
+    {"label": "Variant that moves the key metric most", "value": "V3 dispersion, mean |Δ| 3.06 pp",
+     "baseline": "SSC-inversion 0.20 pp", "baseline_label": "variant_summary.json",
+     "note": "lhw=40 has the largest single-cell effect, 20.9 pp at the bottom decile"},
+    {"label": "Compute used (this continuation / whole study)", "value": "0.30 / 0.48 core-hours",
+     "baseline": "40 core-hour cap", "baseline_label": "spec §10",
+     "note": "238 new EUROMOD runs; 001's cut of these variants was not budget-justified"}
+  ],
+  "tables": [
+    {"title": "Variant sensitivity of the headline (bottom-quintile PTR and 2026 ranking)",
+     "columns": ["Variant", "mean |Δ PTR| (pp)", "max |Δ| (pp)", "2026 Ψ_w<Ψ_d (stable)"],
+     "rows": [
+       ["headline", "—", "—", "8 / 10"],
+       ["V3 SES dispersion", "3.06", "12.28", "8 / 10"],
+       ["lhw = 40 (full time)", "1.83", "20.93", "7 / 9"],
+       ["V6 one child", "0.74", "3.77", "7 / 9"],
+       ["V5 rent = 20% AW", "0.68", "6.35", "7 / 8"],
+       ["employer-SSC inversion (2025)", "0.20", "1.52", "6 / 8"]
+     ],
+     "highlight_row": 0},
+    {"title": "Bottom-quintile PTR change 2009→2026, change-validated set V_Δ",
+     "columns": ["Country", "2009 (%)", "2026 (%)", "Δ (pp)"],
+     "rows": [
+       ["Denmark", "86.1", "61.8", "−24.3"],
+       ["France", "60.5", "55.3", "−5.2"],
+       ["Sweden", "51.4", "47.2", "−4.2"],
+       ["Finland", "66.3", "64.0", "−2.2"],
+       ["Netherlands", "91.7", "91.6", "−0.2"],
+       ["Luxembourg", "71.9", "83.5", "+11.5"]
+     ],
+     "highlight_row": 0}
+  ],
+  "figures": [
+    {"file": "results/fig4_variant_sensitivity.png",
+     "caption": "Left: each country-year's bottom-quintile PTR under a variant vs the headline (dashed = no change); V3 dispersion (yellow) moves it most. Right: share of stable countries with Ψ_w < Ψ_d in 2026 — the in-work-transfer-cheaper ranking stays at 75–100% under every variant.",
+     "alt": "Scatter of variant vs headline PTR clustering on the 45-degree line, and a horizontal bar chart of ranking shares all above 75%"},
+    {"file": "results/fig2_bottom_quintile_trajectory.png",
+     "caption": "Bottom-quintile participation tax rate, 1998 paper marker and 2009–2026 rules; solid = change-validated (gate 3b). Denmark's −24 pp fall dominates.",
+     "alt": "Line chart of bottom-quintile PTR by year per country with a separate 1998 marker"},
+    {"file": "results/fig1_decile_ptr_ladder.png",
+     "caption": "PTR by earnings decile: 1998 (paper) vs 2009 and 2026 rules, small multiples by country — bottom-decile rates rise toward participation traps under 2009+ rules.",
+     "alt": "4x4 grid of decile PTR profiles comparing 1998, 2009 and 2026"}
+  ],
+  "notes": [
+    "This is the continuation of followup/001-living-update: 001's headline (14 countries x 2009-2026) and all six gates were reused and reproduced bit-for-bit; this session completed the five secondary variants 001 had cut without budget justification.",
+    "Headline regime is V4 (q=0): 7 of 14 countries triggered no meaningful unemployment benefit in the hypothetical households (pre-declared rule 3).",
+    "Ψ levels are unstable for the lower deciles because bottom-decile PTR/MTR approach 100% (participation traps); Ψ counts are over the 'stable' countries only, and this instability is itself a finding. Robust deliverables are the decile profiles and the bottom-quintile PTR change.",
+    "Fixed an inherited bug: V5 rent was never applied (xhcrt hard-coded to 0); corrected and re-run.",
+    "Out of scope (stated as limits): UK (left EUROMOD), representative-microdata claims, policy years 2005-2008, elasticity re-estimation (Study B). Bottom-decile rates have no external TaxBEN benchmark; they rest on internal probes (IE hours PASS, DE Midijob inconclusive)."
+  ],
+  "report_file": "report.md"
+}

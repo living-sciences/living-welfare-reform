@@ -1,0 +1,5 @@
+eta,target,model_cost_per_participant_kEUR,model_cost_per_FTE_kEUR,pub_participant_kEUR,pub_FTE_kEUR,participant_vs_pub,FTE_vs_pub
+benchmark,deciles_1-2,-3.5,-7.5,121.1-560.7,368.5-1660.1,below,below
+benchmark,deciles_1-3,-2.5,-4.7,121.1-560.7,368.5-1660.1,below,below
+Bartels-Shupe,deciles_1-2,10.6,22.3,121.1-560.7,368.5-1660.1,below,below
+Bartels-Shupe,deciles_1-3,16.0,30.1,121.1-560.7,368.5-1660.1,below,below

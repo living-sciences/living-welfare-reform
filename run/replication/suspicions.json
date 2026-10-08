@@ -1,0 +1,24 @@
+[
+  {
+    "id": "S1",
+    "phase": "replicate",
+    "claim_ids": ["C9"],
+    "code_ref": "run_heterogeneous_table6.py:48",
+    "paper_span": "Table 6, panel (b); 'in all countries, the working poor policy continues to appear more favourable ... than the demogrant policy'",
+    "observation": "In Table 6 panel (b) the working-poor trade-off exceeds the demogrant trade-off for Finland (4.65 vs 4.10), Italy (1.84 vs 1.82) and Sweden (6.21 vs 4.30); these are reproduced faithfully and match the paper's own printed Table 6(b).",
+    "why_suspicious": "The replication plan's expected outcome states the working-poor trade-off remains below the demogrant trade-off in EVERY country in panel (b). That is not what the paper's table shows (nor what the correct computation yields) for the three compressed-earnings-distribution countries. The paper's prose 'more favourable' refers to overall desirability/efficiency effect, not the trade-off ratio in every country. No code defect; flagging the plan-vs-paper mismatch.",
+    "confidence": 0.5,
+    "status": "open"
+  },
+  {
+    "id": "S2",
+    "phase": "replicate",
+    "claim_ids": ["C8"],
+    "code_ref": "run_heterogeneous_table6.py:38",
+    "paper_span": "Table 6(b), Denmark demogrant trade-off = 29.09",
+    "observation": "Denmark's demogrant trade-off in Table 6(b) reproduces as 28.10 vs the paper's 29.09 (~3% gap), whereas Table 2(a) Denmark reproduces exactly (25.25).",
+    "why_suspicious": "The trade-off denominator pg*(1-Dd)-sg is near-singular for Denmark (very large trade-off), so it amplifies small differences in how the heterogeneous eta profile weights the group-decile cells. Likely a sensitivity/rounding effect in the cached EUROMOD cell inputs rather than a methodological error; all other panel-(b) cells match to rounding.",
+    "confidence": 0.3,
+    "status": "open"
+  }
+]

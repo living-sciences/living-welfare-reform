@@ -1,0 +1,16 @@
+# Corrected equity-efficiency trade-off table, 2026 (V4, q=0). Source: followup/001-living-update/results/welfare_by_year.csv (byte-identical in 002-living-update-cont). All 14 countries incl. EL and LU. Psi_w<Psi_d counted only where Psi is stable. Among the 10 Psi-stable countries: Psi_w<Psi_d in 8, Psi_w<1 in 4. DK flagged beta-step-dependent; ES flagged OECD-contradicted. Assembled, not recomputed, by 005. Flags added per audit final-check item A (orchestrator correction, logged in fix_log.md): in_V_level_validated = {DK,FR,NL}; FR/EL tau unvalidated (gate 3c aborted); IT and PT carry the same OECD-change-contradicted note as ES.
+country,regime,Psi_d_2026,Psi_w_V4_2026,Psi_w_lt_Psi_d,Psi_w_lt_1,Psi_stable,in_V_level_validated,tau_unvalidated,note
+AT,V4,undefined,52.96,n/a (unstable),n/a (unstable),unstable,no,no,Psi unstable in 2026 (bottom-decile PTR/MTR ~=100% participation trap)
+BE,V4,4.66,0.0001,yes,yes,stable,no,no,
+DK,V4,undefined,undefined,n/a (unstable),n/a (unstable),unstable,yes,no,"beta-step-dependent: of the -24.3 pp 2009->2026 bottom-quintile PTR fall, -18.0 pp is the single 2025->2026 J2.54+ beta step, covered by no gate; Psi undefined in 2026"
+FI,V4,4.326,2.446,yes,no,stable,no,no,
+FR,V4,3.051,2.137,yes,no,stable,yes,yes (gate 3c aborted; flag wherever Psi/tau shown),
+DE,V4,2.395,0.7103,yes,yes,stable,no,no,
+EL,V4,1.487,1.216,yes,no,stable,no,yes (gate 3c aborted; flag wherever Psi/tau shown),
+IE,V4,2.129,2.574,no,no,stable,no,no,
+IT,V4,1.783,1.56,yes,no,stable,no,no,contradicted by the OECD change benchmark (gate 3b: ours +22.9 vs TaxBEN -7.4)
+LU,V4,9.041,-0,yes,yes,stable,no,no,
+NL,V4,undefined,251.3,n/a (unstable),n/a (unstable),unstable,yes,no,Psi unstable in 2026 (bottom-decile PTR/MTR ~=100% participation trap)
+PT,V4,2.193,0.3992,yes,yes,stable,no,no,contradicted by the OECD change benchmark (gate 3b: ours -11.2 vs TaxBEN +16.6 at AW67; -9.9 vs +9.4 at MINW)
+ES,V4,undefined,198.3,n/a (unstable),n/a (unstable),unstable,no,no,contradicted by the OECD change benchmark (gate 3b: ours +34.7 vs TaxBEN +9.8 at AW67; +46.6 vs -1.1 at MINW); fails gate-3 levels badly (0.21); Psi undefined in 2026
+SE,V4,2.896,3.113,no,no,stable,no,no,

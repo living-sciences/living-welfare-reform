@@ -1,0 +1,101 @@
+{
+  "paper": "Immervoll, Kleven, Kreiner & Saez (2007), The Economic Journal 117:1-44 - Welfare Reform in European Countries",
+  "working_directory": "/workspace/output/replication/codebase",
+  "note": "Shipped repo contained only EUROMOD.xls, cached CSV sheet exports, and prep_checks/check_table2a.py. All 7 table/figure driver scripts named in the plan were absent and were written from scratch (welfare_core.py + 6 run_*/plot_* scripts), re-implementing eqs (15),(16),(18),(19) exactly as encoded in the shipped prep check. Writing these scripts is counted as the per-step 'fix'.",
+  "step_outcomes": [
+    {
+      "step_id": 1,
+      "description": "Set up environment; inventory EUROMOD.xls; run shipped prep check prep_checks/check_table2a.py.",
+      "command_executed": "uv venv /workspace/.venv && source activate && uv pip install xlrd numpy scipy matplotlib && python3 prep_checks/check_table2a.py",
+      "exit_code": 0,
+      "stdout": "15 country rows printed, e.g. 'AT -0.38 3.04 -0.08 1.5 shares 0.37 0.5' ... 'UK -0.22 1.88 -0.01 1.06 shares 0.47 0.6'. Workbook exposes all 20 sheets: Read Me, Aggregate Run, Disaggregate Run, Tax-Benefit Data_1998, 15 country sheets, WeightsGermany.",
+      "stderr": "",
+      "output_files": ["/workspace/output/replication/installed_packages.txt"],
+      "duration_seconds": 20,
+      "fixes_applied": [],
+      "code_modified": false,
+      "notes": "Dependencies installed cleanly (numpy 2.5.3, scipy 1.18.1, matplotlib 3.11.2, xlrd 2.0.2). Prep check runs with no missing-sheet/file errors and its 15 rows already match paper Table 2(a). GPU present but not needed (lightweight closed-form algebra)."
+    },
+    {
+      "step_id": 2,
+      "description": "Benchmark scenario -> Table 2(a) and Table 7 cols (1)-(2). eps=0.1, eta=[.4,.4,.3,.3,.2,.2,.1,.1,0,0] constant across groups.",
+      "command_executed": "python3 run_benchmark_table2a.py --out results/table2a.csv",
+      "exit_code": 0,
+      "stdout": "15 rows. AT eff_d=-0.376 psi_d=3.039 eff_w=-0.084 psi_w=1.498 pg=0.373 eg=0.499 ... DK -0.823/25.252/+1.654/-0.000 pg=0.192 eg=1.000 ... SW -0.619/8.349/-0.170/4.364.",
+      "stderr": "",
+      "output_files": ["results/table2a.csv", "results/table2a.json"],
+      "duration_seconds": 1,
+      "fixes_applied": [
+        {"file_path": "welfare_core.py", "description": "Wrote core module (load_country, compute) implementing eqs 15/16/18/19 and gaining-set conditions, matching the shipped prep check.", "original_error": "Driver scripts named in plan did not exist in the shipped repo.", "diff_snippet": "+def compute(data, eta, eps): Dd=((tau/(1-tau)*eps + a/(1-a)*eta)*sh).sum(); Dw=1-(1-Dd)/(1-(a/(1-a)*eta*em).sum()); ..."},
+        {"file_path": "run_benchmark_table2a.py", "description": "Wrote Step-2 driver emitting CSV+JSON.", "original_error": "File absent.", "diff_snippet": "+ run over COUNTRIES with ETA_BENCHMARK, EPS_BENCHMARK"}
+      ],
+      "code_modified": true,
+      "notes": "EXACT match to paper Table 2(a) and Table 7 cols (1)-(2) for all 15 countries at 2 decimals."
+    },
+    {
+      "step_id": 3,
+      "description": "Table 2(b): no participation responses (eta=0, eps=0.1).",
+      "command_executed": "python3 run_noparticipation_table2b.py --out results/table2b.csv",
+      "exit_code": 0,
+      "stdout": "15 rows. All Dd==Dw: True; All psi_d<=psi_w: True. e.g. AT eff -0.156/-0.156 psi 1.573/2.163; DK 2.315/4.752; SW 2.230/7.476.",
+      "stderr": "",
+      "output_files": ["results/table2b.csv", "results/table2b.json"],
+      "duration_seconds": 1,
+      "fixes_applied": [{"file_path": "run_noparticipation_table2b.py", "description": "Wrote Step-3 driver (eta=0).", "original_error": "File absent.", "diff_snippet": "+eta0=np.zeros(10); compute(...); Dd_equals_Dw flag"}],
+      "code_modified": true,
+      "notes": "EXACT match to paper Table 2(b). With eta=0, Dd==Dw to <1e-9 in all 15 countries and demogrant trade-off <= working-poor trade-off everywhere, as the theory requires."
+    },
+    {
+      "step_id": 4,
+      "description": "Table 4: hours-of-work elasticity sensitivity, eps in {0, 0.1, 0.2}, benchmark eta fixed.",
+      "command_executed": "python3 run_hours_sensitivity_table4.py --out results/table4.csv",
+      "exit_code": 0,
+      "stdout": "15 rows x 12 numeric cols. eps=0.1 block reproduces Table 2(a). eps=0 e.g. AT -0.22/1.89/0.15/0.53; eps=0.2 e.g. AT -0.53/5.03/-0.31/5.00, BE -0.82/14.78/-0.63/36.55.",
+      "stderr": "",
+      "output_files": ["results/table4.csv", "results/table4.json"],
+      "duration_seconds": 1,
+      "fixes_applied": [{"file_path": "run_hours_sensitivity_table4.py", "description": "Wrote Step-4 driver sweeping eps.", "original_error": "File absent.", "diff_snippet": "+for e in [0.0,0.1,0.2]: compute(data, ETA_BENCHMARK, e)"}],
+      "code_modified": true,
+      "notes": "eps=0.1 block equals Table 2(a) exactly; eps=0 and eps=0.2 match paper Table 4 panels (a)/(c). The paper's degenerate 'No Gainers'/'No Losers' cells (DK demogrant and FI/SW/SP working-poor at eps=0.2) correctly surface as NaN or negative-denominator trade-offs (den<=0 -> has_gainers=False)."
+    },
+    {
+      "step_id": 5,
+      "description": "Table 6: participation elasticities heterogeneous across demographic groups. Panel (a)=benchmark; panel (b)=concentrated on female groups 2,4,6,8,10 with eta=[.9,.9,.6,.6,.4,.4,.2,.2,0,0], 0 for male groups; eps=0.1.",
+      "command_executed": "python3 run_heterogeneous_table6.py --out results/table6.csv",
+      "exit_code": 0,
+      "stdout": "15 rows. Panel (b) e.g. AT -0.286/2.304/-0.049/1.264; SW -0.421/4.281/-0.201/6.205; DK demo -0.839/28.097, wp 'No Losers' (NaN). Panel (a) reproduces Table 2(a).",
+      "stderr": "",
+      "output_files": ["results/table6.csv", "results/table6.json"],
+      "duration_seconds": 1,
+      "fixes_applied": [{"file_path": "run_heterogeneous_table6.py", "description": "Wrote Step-5 driver using a 10x10 group-x-decile eta with the female profile on groups 2,4,6,8,10.", "original_error": "File absent.", "diff_snippet": "+eta=np.zeros((10,10)); eta[[1,3,5,7,9],:]=[.9,.9,.6,.6,.4,.4,.2,.2,0,0]"}],
+      "code_modified": true,
+      "notes": "Panel (a) reproduces Table 2(a). Panel (b) matches paper Table 6(b) closely (DK demogrant 28.10 vs 29.09, ~3% on a near-singular trade-off; all other cells within rounding). The plan's expectation that WP trade-off is below demogrant in EVERY panel-(b) country is NOT met for FI/IT/SW -- and the paper's own Table 6(b) agrees (FI 4.65>4.10, IT 1.84>1.82, SW 6.21>4.30), due to their compressed earnings distributions. Reported faithfully; see suspicions.json S1."
+    },
+    {
+      "step_id": 6,
+      "description": "Table 3: critical average participation elasticities via scipy.optimize.brentq. (a) Psi_w=Psi_d, (b) Dw=0 (Psi_w=1), (c) Pareto improvement (no losers).",
+      "command_executed": "python3 run_critical_elasticities_table3.py --out results/table3.csv",
+      "exit_code": 0,
+      "stdout": "15 rows, all 'ordered:True'. e.g. AT 0.069/0.316/0.568; DK 0.045/0.135/0.199; IT 0.185/0.447/0.798; GR 0.099/0.384/1.143.",
+      "stderr": "",
+      "output_files": ["results/table3.csv", "results/table3.json"],
+      "duration_seconds": 2,
+      "fixes_applied": [{"file_path": "run_critical_elasticities_table3.py", "description": "Wrote Step-6 driver: Table-3 eta profile scaled by eta_avg, brentq root-finder with sign-change scan; Pareto condition = (1-Dw)=max_j(s_j/e_j).", "original_error": "File absent.", "diff_snippet": "+brentq over eta_avg for Psi_w-Psi_d, Dw, and (1-Dw)-max(s/e)"}],
+      "code_modified": true,
+      "notes": "ALL 45 values (15 countries x 3 conditions) match paper Table 3 to 2 decimals. crit_identical<crit_zeroloss<crit_pareto in every country."
+    },
+    {
+      "step_id": 7,
+      "description": "Figures 1 & 2: marginal and participation tax rates by decile, 3 panels (Nordic/Continental/Anglo-Saxon-Southern).",
+      "command_executed": "python3 plot_tax_rates_fig1_fig2.py --outdir figures/",
+      "exit_code": 0,
+      "stdout": "Wrote figure1_marginal_tax_rates.pdf, figure2_participation_tax_rates.pdf, tax_rates_by_decile.csv (150 rows).",
+      "stderr": "",
+      "output_files": ["figures/figure1_marginal_tax_rates.pdf", "figures/figure2_participation_tax_rates.pdf", "figures/tax_rates_by_decile.csv"],
+      "duration_seconds": 3,
+      "fixes_applied": [{"file_path": "plot_tax_rates_fig1_fig2.py", "description": "Wrote Step-7 plotter reading 'Without Consumption Taxes' marginal/participation tax columns from Tax-Benefit Data_1998 sheet by scanning country-name block headers.", "original_error": "File absent.", "diff_snippet": "+NAME2CC blocks; mtr=col3, ptr=col4; 3-panel stacked figures"}],
+      "code_modified": true,
+      "notes": "Both PDFs rendered and visually verified (3 panels each, deciles 1-10, labelled lines per country). Patterns match paper: Nordic high marginal rates rising with decile; DK participation tax falls from ~77% to ~60% across deciles. Per plan, these are the shipped EUROMOD-computed tax-rate inputs (EUROMOD cannot be re-run from restricted micro-data in this container)."
+    }
+  ]
+}

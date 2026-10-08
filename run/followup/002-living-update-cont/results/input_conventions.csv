@@ -1,0 +1,15 @@
+cc,earnvar,sicer_ratio_med_2009,sicer_ratio_med_2025,sicer_status,nrr_route,ub_triggers,q_regime,ie_hours_probe,de_midijob_probe
+AT,yem,0.293,0.182,ok,direct_construction(HHoT_un-equiv),True,mixed_q_eligible,,
+BE,yem,0.277,0.242,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,
+DK,yem,0.007,0.005,dk_exception(near0),direct_construction(HHoT_un-equiv),False,q0_fallback,,
+FI,yem,0.238,0.209,ok,direct_construction(HHoT_un-equiv),True,mixed_q_eligible,,
+FR,yem00,0.378,0.309,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,
+DE,yem,0.208,0.115,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,inconclusive_bandpoints
+EL,yem,0.0,0.0,gross_basis(sicer=0),direct_construction(HHoT_un-equiv),False,q0_fallback,,
+IE,yem,0.107,0.111,ok,direct_construction(HHoT_un-equiv),True,mixed_q_eligible,PASS,
+IT,yem,0.0,0.0,gross_basis(sicer=0),direct_construction(HHoT_un-equiv),False,q0_fallback,,
+LU,yem,0.149,0.136,ok,direct_construction(HHoT_un-equiv),True,mixed_q_eligible,,
+NL,yem,0.137,0.173,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,
+PT,yem,0.238,0.238,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,
+ES,yem,0.299,0.299,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,
+SE,yem,0.314,0.314,ok,direct_construction(HHoT_un-equiv),False,q0_fallback,,

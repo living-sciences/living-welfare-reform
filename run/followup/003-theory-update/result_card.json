@@ -1,0 +1,57 @@
+{
+  "schema": "sai.followup.result_card/v1",
+  "headline": "Re-reading 2009-2026 EU tax-benefit rules through optimal-transfer theory: the paper's \"in-work transfer beats demogrant\" result survives and is strengthened post-2017 (critical elasticity fell 0.22->0.13), but it is explicitly elasticity-contingent - it holds for 0/14 countries at a US-EITC-style zero participation response and 9/14 at Chetty-sized elasticities in 2026.",
+  "status": "completed",
+  "metrics": [
+    {"label": "Median critical avg. elasticity for Psi_w<Psi_d (panel FI,FR,EL,IT,SE, eps=0.1)",
+     "value": "0.13 (2026)", "baseline": "0.22 (2009)",
+     "baseline_label": "this study, frontier_by_era.csv", "note": "in-work transfer now dominates the demogrant at lower elasticities; clean break ~2017"},
+    {"label": "2026 countries where in-work beats demogrant, at each literature elasticity",
+     "value": "Kleven US-EITC(~0): 0/14; Chetty(0.25): 9/14", "baseline": "14/14 'for a wide range' (paper C12)",
+     "baseline_label": "paper / table2a.csv", "note": "Bartels&Shupe EU(~0.11): 5/14; survives mid-range, collapses at the US-EITC floor"},
+    {"label": "DK 1998 Pareto reproduction (inverse optimum)",
+     "value": "decile-1 g = -0.73 < 0 (reproduced)", "baseline": "eff_w = +1.654 (Pareto)",
+     "baseline_label": "run/replication table2a.csv", "note": "g-iff flags only DK in 1998, matching the paper's strict statement"},
+    {"label": "Belgium marginal in-work transfer: model cost per FTE vs de Mahieu (2021)",
+     "value": "-7.5k EUR (benchmark eta) / 22-30k (B&S eta)", "baseline": "368.5k-1660.1k EUR per FTE",
+     "baseline_label": "de Mahieu 2021 IJM 14(1)", "note": "below range as pre-declared: lump-sum, no phase-out; self-financing at benchmark eta. [validation]"},
+    {"label": "Inverse-optimum consistency: g-iff vs 001 Pareto flag (stable country-years)",
+     "value": "89.9% agree", "baseline": "72.5% over all country-years",
+     "baseline_label": "this study, item1_agreement.csv", "note": "[CONSISTENCY CHECK]; divergences are the bottom-decile participation-trap (Psi-unstable) cases"}
+  ],
+  "tables": [
+    {"title": "In-work transfer beats demogrant (Psi_w<Psi_d): count of 14 countries by era and literature elasticity (eps=0.1)",
+     "columns": ["Era", "Kleven US-EITC (~0)", "Bartels&Shupe EU (~0.11)", "Chetty (0.25)", "Lundberg&Norell (0.38)"],
+     "rows": [
+       ["2009", "0 / 14", "4 / 14", "5 / 14", "7 / 14"],
+       ["2015", "0 / 14", "7 / 14", "8 / 14", "10 / 14"],
+       ["2020", "0 / 14", "6 / 14", "10 / 14", "11 / 14"],
+       ["2026", "0 / 14", "5 / 14", "9 / 14", "10 / 14"]
+     ],
+     "highlight_row": 3},
+    {"title": "Median critical avg. elasticity by era (panel FI,FR,EL,IT,SE, eps=0.1)",
+     "columns": ["Boundary", "2009", "2015", "2020", "2026"],
+     "rows": [
+       ["Psi_w = Psi_d (in-work cheaper)", "0.22", "0.26", "0.12", "0.13"],
+       ["Psi_w = 1", "0.73", "0.75", "0.32", "0.39"],
+       ["Pareto (no losers)", "0.55", "0.54", "0.87", "0.92"]
+     ],
+     "highlight_row": 0}
+  ],
+  "figures": [
+    {"file": "results/fig1_elasticity_frontier.png",
+     "caption": "Elasticity frontier by era in (avg extensive elasticity eta-bar, intensive elasticity eps) space. Blue = Psi_w<Psi_d boundary (in-work cheaper to the right), green = Psi_w<1, orange = Pareto; curves are the median over the fixed panel {FI,FR,EL,IT,SE}. Vertical bands = post-2007 extensive-elasticity evidence, labelled by origin (Kleven is US EITC; Chetty mostly US). The in-work-cheaper boundary moved left (easier) after 2015.",
+     "alt": "Four-panel plot (2009,2015,2020,2026) of critical-elasticity boundary curves with shaded literature elasticity bands"},
+    {"file": "results/fig2_critical_eta_and_g.png",
+     "caption": "Left: critical average elasticity over time (eps=0.1, panel median) with literature bands - the Psi_w=Psi_d threshold drops into the European (Bartels&Shupe) band around 2017. Right: employment share in deciles with negative inverse-optimum welfare weight g, 1998 vs 2026 [CONSISTENCY CHECK].",
+     "alt": "Line chart of critical elasticity vs year and grouped bar chart of g<0 employment share by country"}
+  ],
+  "notes": [
+    "Study B of the welfare-reform follow-up: CPU-only, no EUROMOD runs, no fetches. Seeded from followup/002-living-update-cont (the completed continuation of 001-living-update); reuses its rates and the replication's welfare_core/formula layer unchanged.",
+    "Respects Study A: validated set V = 14 countries, headline regime V4 (q=0, 7 UB-leg fallbacks), no 'tau unvalidated' country (gate-3c medians <=0.55pp). Inherits its Psi-instability for the lower deciles.",
+    "Inverse-optimum item is a [CONSISTENCY CHECK], not a test; the strict g<0 iff over-predicts Pareto in 2026 for AT/NL/ES (participation-trap, Psi-unstable), flagged not hidden. The minimal amendment (eta on secondary earners/lone parents) barely moves the 2026 ranking - the level of bottom-decile PTRs, not composition, is the driver.",
+    "The word 'validation' is used only for the Belgium external check (item 4b); the model cost per job sits below the published de Mahieu (2021) range, the pre-declared expected direction. Belgium is the only study country with a cited cost-per-job estimate.",
+    "1998 values are survey-cell averages and 2026 values are hypothetical households (method break) - never joined. Claims tagged [ESTIMATED]/[CALIBRATED]/[CONSISTENCY CHECK]/[PROPOSED] in theory_update.md."
+  ],
+  "report_file": "report.md"
+}

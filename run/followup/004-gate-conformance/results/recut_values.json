@@ -1,0 +1,103 @@
+{
+  "validated_set_V": [
+    "DK",
+    "FR",
+    "NL"
+  ],
+  "V_count": 3,
+  "V_total": 14,
+  "V_delta": [
+    "DK",
+    "FR",
+    "NL"
+  ],
+  "headline_honest_partial": "OECD level-validated in 3 of 14 (|V|<10 -> honest partial)",
+  "E3_over_V_2026_V4": {
+    "Psi_w_lt_Psi_d": "1 of 3",
+    "Psi_w_lt_Psi_d_ccs": [
+      "FR"
+    ],
+    "undefined_in_V": [
+      "DK",
+      "NL"
+    ],
+    "Psi_w_lt_1": "0 of 3",
+    "baseline_1998_noUB_Psi_w_lt_Psi_d": "3 of 3",
+    "baseline_1998_noUB_Psi_w_lt_1": "1 of 3 (DK)"
+  },
+  "descriptive_stable10_2026_UNVALIDATED": {
+    "set": [
+      "BE",
+      "FI",
+      "FR",
+      "DE",
+      "EL",
+      "IE",
+      "IT",
+      "LU",
+      "PT",
+      "SE"
+    ],
+    "Psi_w_lt_Psi_d": "8 of 10",
+    "flips_to_demogrant": [
+      "IE",
+      "SE"
+    ],
+    "Psi_w_lt_1": "4 of 10",
+    "Psi_w_lt_1_ccs": [
+      "BE",
+      "DE",
+      "LU",
+      "PT"
+    ],
+    "baseline_1998_mixedq_Psi_w_lt_Psi_d": "10 of 10",
+    "baseline_1998_mixedq_Psi_w_lt_1": "3 of 10 (FR,IE,PT)"
+  },
+  "bottom_quintile_PTR_change": {
+    "median_over_Vdelta_pp": -5.2,
+    "Vdelta": [
+      "DK",
+      "FR",
+      "NL"
+    ],
+    "unvalidated_all14_median_pp": -1.2,
+    "dropped_nonconforming_median_pp": -3.24,
+    "contradicted_by_OECD": {
+      "ES_AW67_ours_vs_taxben": [
+        34.7,
+        9.8
+      ],
+      "IT_AW67_ours_vs_taxben": [
+        22.9,
+        -7.4
+      ]
+    },
+    "median_over_DK_FR_only_pp": -14.7
+  },
+  "denmark_decomposition": {
+    "a12_2009": 86.09,
+    "a12_2025": 79.85,
+    "a12_2026": 61.83,
+    "total_2009_2026_pp": -24.26,
+    "beta_step_2025_2026_pp": -18.02,
+    "gradual_2009_2025_pp": -6.24,
+    "note": "beta step uncovered by any gate (gate 4 checks 2025, gate 3b DK covers 2010-2024 AW67)"
+  },
+  "Psi_w_lt_1_2026_list_corrected": [
+    "BE",
+    "DE",
+    "LU",
+    "PT"
+  ],
+  "core_hours_corrected": 0.22,
+  "tau_unvalidated_countries": [
+    "FR",
+    "EL"
+  ],
+  "gate_completions": {
+    "NL_gate3_noUB": "PASS (within-5pp 0.92; 0 MINW/S_C2 off>10) -> NL in V",
+    "FR_EL_gate3c_mtr": "FAIL on retry (add-on aborted both years) -> FR, EL tau-unvalidated",
+    "table5b": "transcribed to baseline_1998_noUB.csv"
+  },
+  "note_vs_instruction": "Instruction sec3 provisionally expected V={DK,FR} and median -14.7pp over {DK,FR}; because the NL gate-3 completion (sec2.1) PASSED, V and V_delta expand to {DK,FR,NL} and the conformant median is -5.2 pp. The {DK,FR}-only median (-14.7 pp, DK-beta-dominated) is retained as a two-country sensitivity."
+}

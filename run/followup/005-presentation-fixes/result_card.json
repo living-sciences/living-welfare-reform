@@ -1,0 +1,129 @@
+{
+  "schema": "sai.followup.result_card/v1",
+  "headline": "Re-cut to the spec's own gate rules, the living-update is an honest partial: only 3 of 14 countries are OECD level-validated (DK, FR, NL), and among them the paper's 'in-work transfer beats demogrant' result holds in just 1 of 3 (France; Denmark's and the Netherlands' trade-off is numerically undefined in 2026) \u2014 the widely-quoted '8 of 10' is a descriptive, OECD-unvalidated statistic.",
+  "status": "partial",
+  "metrics": [
+    {
+      "label": "OECD level-validated countries (gate 3, 2010\u20132025)",
+      "value": "3 of 14 (DK, FR, NL)",
+      "baseline": "|V| < 10 \u2192 honest partial",
+      "baseline_label": "spec-living-update.md \u00a74 rule 2",
+      "note": "NL added by 004's gate-3 completion (within-5pp 0.92); the old cards hard-coded validated_set = all 14. Gate 3 is run over the 2010\u20132025 OECD-benchmark window, not a single year."
+    },
+    {
+      "label": "In-work beats demogrant (\u03a8_w < \u03a8_d) over validated V, 2026 (V4)",
+      "value": "1 of 3 (FR only)",
+      "baseline": "3 of 3",
+      "baseline_label": "1998 no-UB, paper Table 5(b), same set",
+      "note": "DK & NL \u03a8 numerically undefined in 2026 (bottom-decile \u2248100% traps) \u2014 not a reversal of the paper; FR carries a gate-3c \u03c4-unvalidated flag (stays in the count per spec)"
+    },
+    {
+      "label": "Median bottom-quintile PTR change 2009\u21922026 over V_\u0394 = {DK, FR, NL}",
+      "value": "-5.2 pp",
+      "baseline": "no same-definition 1998 baseline (V4 headline, q=0)",
+      "baseline_label": "welfare_by_year.csv, 004's recut",
+      "note": "all-14 figure -1.2 pp shown only as a labelled UNVALIDATED panel; {DK,FR}-only two-country median -14.7 pp (DK-beta-dominated); the old -3.2 pp over a non-conforming set is dropped; ES, IT & PT removed (contradicted by the OECD change benchmark \u2014 PT opposite sign at both AW67 and MINW)"
+    },
+    {
+      "label": "Denmark bottom-quintile PTR change 2009\u21922026",
+      "value": "-24.3 pp (of which -18.0 pp is the 2025\u219226 beta step)",
+      "baseline": "86.1% (2009)",
+      "baseline_label": "welfare_by_year.csv DK a_bottom_quintile",
+      "note": "the 2026 beta-rules step is covered by no gate (gate 4 checks 2025); only -6.2 pp is gradual 2009\u21922025"
+    },
+    {
+      "label": "Descriptive '8 of 10' ranking result (\u03a8-stable set, 2026)",
+      "value": "8 of 10 [UNVALIDATED]",
+      "baseline": "10 of 10",
+      "baseline_label": "1998 same set, mixed-q (replication table2a.csv)",
+      "note": "arithmetically correct (IE, SE flip) but over a post-hoc set that excludes DK & NL and includes 6 level-gate failers; label-only, never the headline"
+    }
+  ],
+  "tables": [
+    {
+      "title": "Honest-partial headline: validated set vs unvalidated panels (2026, V4)",
+      "columns": [
+        "Estimand (2026)",
+        "Validated V = {DK, FR, NL}",
+        "1998 baseline, same set",
+        "Unvalidated panel"
+      ],
+      "rows": [
+        [
+          "\u03a8_w < \u03a8_d",
+          "1 of 3 (FR; DK,NL undefined)",
+          "3 of 3 (Table 5b, no-UB)",
+          "8 of 10 \u03a8-stable (descr.)"
+        ],
+        [
+          "\u03a8_w < 1",
+          "0 of 3 (FR = 2.14)",
+          "1 of 3 (DK)",
+          "4 of 10: BE, DE, LU, PT"
+        ],
+        [
+          "Median bottom-q PTR \u0394 2009\u219226",
+          "-5.2 pp over V_\u0394",
+          "no no-UB 1998 PTR baseline",
+          "-1.2 pp (all 14)"
+        ]
+      ],
+      "highlight_row": 0
+    },
+    {
+      "title": "Corrected validation-gate table",
+      "columns": [
+        "Gate",
+        "Corrected status"
+      ],
+      "rows": [
+        [
+          "0 Environment / 1 Anchor (Table 2a)",
+          "PASS / PASS exact (max diff 0)"
+        ],
+        [
+          "2 Plumbing anchor",
+          "NOT RUN as specced (1998 \u03c4/a arrays never fed through the new path)"
+        ],
+        [
+          "3 Levels no-UB \u2192 V (2010\u20132025)",
+          "PASS DK, FR, NL (NL completed in 004) \u2014 |V| = 3 of 14"
+        ],
+        [
+          "3b Change \u2192 V_\u0394",
+          "DK, FR, NL pass; ES, IT & PT CONTRADICTED by OECD change"
+        ],
+        [
+          "3c MTR / \u03c4",
+          "12/14 PASS; FR & EL aborted on retry \u2192 \u03c4 UNVALIDATED"
+        ],
+        [
+          "4 Beta vs J2.0+ stable",
+          "PASS all 14 (median |\u0394a| \u2264 0.27 pp)"
+        ]
+      ],
+      "highlight_row": 1
+    }
+  ],
+  "figures": [
+    {
+      "file": "results/fig2_headline_by_cut.png",
+      "caption": "'In-work transfer beats demogrant' (\u03a8_w < \u03a8_d), 1998 vs 2026, under the spec-conformant validated cut (V = DK, FR, NL; left) and the descriptive \u03a8-stable cut (right, UNVALIDATED). On the validated set the 1998 value (3 of 3, Table 5b no-UB) drops to 1 of 3 in 2026 \u2014 because Denmark and the Netherlands have numerically undefined \u03a8, not because the ranking reverses.",
+      "alt": "Grouped bar chart: share with Psi_w<Psi_d for two country sets, 1998 baseline vs 2026, annotated k of n"
+    },
+    {
+      "file": "results/fig1_gate3b_change_validation.png",
+      "caption": "Gate-3b PTR change for a single adult at 67% AW, 2010\u21922025 (DK/NL \u21922024): this study (left bars) vs the OECD TaxBEN change benchmark (blue). This is the gate-3b hypothetical-household change, not a bottom-quintile rate. Only DK, FR, NL pass the change gate (green, V_\u0394). Spain, Italy and Portugal are contradicted by the benchmark (ES +34.7 vs +9.8; IT +22.9 vs -7.4, opposite sign; PT -11.2 vs +16.6 at AW67 and -9.9 vs +9.4 at MINW, opposite sign at both levels) and are removed from the PTR-change metric.",
+      "alt": "Bar chart of single-adult 67%-AW PTR change by country, our estimate vs OECD, colour-coded by gate-3b validation status; ES, IT, PT marked contradicted"
+    }
+  ],
+  "notes": [
+    "This card SUPERSEDES the 001/002/003/004 cards for publication (artifact-level correction). The old studies' numbers trace and are unchanged; their reporting violated the spec's validation rules (provenance audit \u00a72\u2013\u00a73, \u00a77). Old studies stay on disk untouched.",
+    "Status partial: FR and EL remain \u03c4-unvalidated (gate-3c MTR add-on aborts on retry); the headline is an honest partial because |V| = 3 < 10.",
+    "005 closes the six presentation items from the audit re-check on 004: (1) the corrected 14-country trade-off table (results/tradeoff_table_corrected.csv, incl. EL & LU; DK beta-step-dependent, ES OECD-contradicted); (2) added card_corrections rows for the 002 and 003 cards; (3) Fig 1 relabelled to gate-3b single-adult-67%-AW; (4) Portugal labelled OECD-contradicted; (5) the -1.2 pp all-14 figure moved to a note and metric-1 gate years set to 2010\u20132025; (6) core-hours 0.48 and the \u00a72\u2013\u00a73/\u00a77 citation.",
+    "The '8 of 10' survives only as a descriptive, unvalidated statistic; the validated-set claim is '1 of 3, France only, DK & NL undefined'. Neither softened nor inflated \u2014 the \u03a8-instability (bottom-decile \u2248100% traps) is itself the finding.",
+    "Full old\u2192corrected claim map in results/card_corrections.csv (18 rows); the per-item change log is results/fix_log.md. The 1998 no-UB baseline (baseline_1998_noUB.csv) and the 003 addendum (findings_addendum_003.md) live read-only in 004/results.",
+    "Compute 0.48 core-h = 001+002 combined (001 0.22 logged + 002 0.26 logged; 0.30 was 002's self-report; the '0.7' was untraceable); 004's three gate completions added ~0.1; 005 is presentation-only (table assembly + re-rendering Fig 1) and adds negligible compute. No data fetched; no EUROMOD run in 005."
+  ],
+  "report_file": "report.md"
+}

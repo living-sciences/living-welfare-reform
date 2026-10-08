@@ -1,0 +1,122 @@
+{
+  "AT": {
+    "country": "AT",
+    "eff_demogrant": -0.15643616110415792,
+    "tradeoff_demogrant": 1.5727210158202705,
+    "eff_workingpoor": -0.15643616110415792,
+    "tradeoff_workingpoor": 2.163071584656674,
+    "Dd_equals_Dw": true
+  },
+  "BE": {
+    "country": "BE",
+    "eff_demogrant": -0.24613111439581958,
+    "tradeoff_demogrant": 1.8729623766620658,
+    "eff_workingpoor": -0.24613111439581958,
+    "tradeoff_workingpoor": 3.4503051516030303,
+    "Dd_equals_Dw": true
+  },
+  "DK": {
+    "country": "DK",
+    "eff_demogrant": -0.22935914180113776,
+    "tradeoff_demogrant": 2.314988798937049,
+    "eff_workingpoor": -0.2293591418011378,
+    "tradeoff_workingpoor": 4.752136036118038,
+    "Dd_equals_Dw": true
+  },
+  "FI": {
+    "country": "FI",
+    "eff_demogrant": -0.23549456033719335,
+    "tradeoff_demogrant": 2.1102352245199887,
+    "eff_workingpoor": -0.2354945603371934,
+    "tradeoff_workingpoor": 6.316990070498829,
+    "Dd_equals_Dw": true
+  },
+  "FR": {
+    "country": "FR",
+    "eff_demogrant": -0.17421706908227913,
+    "tradeoff_demogrant": 1.6112799401307218,
+    "eff_workingpoor": -0.17421706908227907,
+    "tradeoff_workingpoor": 2.38549164347912,
+    "Dd_equals_Dw": true
+  },
+  "GE": {
+    "country": "GE",
+    "eff_demogrant": -0.18990595409343541,
+    "tradeoff_demogrant": 1.7171592248873724,
+    "eff_workingpoor": -0.18990595409343536,
+    "tradeoff_workingpoor": 2.673595110946215,
+    "Dd_equals_Dw": true
+  },
+  "GR": {
+    "country": "GR",
+    "eff_demogrant": -0.09630937578549816,
+    "tradeoff_demogrant": 1.264109953745304,
+    "eff_workingpoor": -0.09630937578549814,
+    "tradeoff_workingpoor": 1.5922636614177241,
+    "Dd_equals_Dw": true
+  },
+  "IR": {
+    "country": "IR",
+    "eff_demogrant": -0.14093703597661103,
+    "tradeoff_demogrant": 1.415148171531172,
+    "eff_workingpoor": -0.140937035976611,
+    "tradeoff_workingpoor": 1.8225646880907622,
+    "Dd_equals_Dw": true
+  },
+  "IT": {
+    "country": "IT",
+    "eff_demogrant": -0.16358916528651776,
+    "tradeoff_demogrant": 1.4281606507879208,
+    "eff_workingpoor": -0.1635891652865178,
+    "tradeoff_workingpoor": 2.6246336130412944,
+    "Dd_equals_Dw": true
+  },
+  "LU": {
+    "country": "LU",
+    "eff_demogrant": -0.1240668075888731,
+    "tradeoff_demogrant": 1.3804713388029441,
+    "eff_workingpoor": -0.12406680758887312,
+    "tradeoff_workingpoor": 1.7093052308442607,
+    "Dd_equals_Dw": true
+  },
+  "NL": {
+    "country": "NL",
+    "eff_demogrant": -0.15374937426029245,
+    "tradeoff_demogrant": 1.5608440471430693,
+    "eff_workingpoor": -0.15374937426029245,
+    "tradeoff_workingpoor": 2.1008457077323985,
+    "Dd_equals_Dw": true
+  },
+  "PT": {
+    "country": "PT",
+    "eff_demogrant": -0.1309644035673083,
+    "tradeoff_demogrant": 1.4434119974790585,
+    "eff_workingpoor": -0.13096440356730832,
+    "tradeoff_workingpoor": 1.678139654626134,
+    "Dd_equals_Dw": true
+  },
+  "SP": {
+    "country": "SP",
+    "eff_demogrant": -0.06742053242777574,
+    "tradeoff_demogrant": 1.1598909561354211,
+    "eff_workingpoor": -0.06742053242777568,
+    "tradeoff_workingpoor": 1.3426468081417717,
+    "Dd_equals_Dw": true
+  },
+  "SW": {
+    "country": "SW",
+    "eff_demogrant": -0.21743670908169443,
+    "tradeoff_demogrant": 2.2295092434412034,
+    "eff_workingpoor": -0.21743670908169443,
+    "tradeoff_workingpoor": 7.475891715998334,
+    "Dd_equals_Dw": true
+  },
+  "UK": {
+    "country": "UK",
+    "eff_demogrant": -0.09404285723734371,
+    "tradeoff_demogrant": 1.2962625417326268,
+    "eff_workingpoor": -0.09404285723734374,
+    "tradeoff_workingpoor": 1.4763736621253365,
+    "Dd_equals_Dw": true
+  }
+}

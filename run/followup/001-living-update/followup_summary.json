@@ -1,0 +1,54 @@
+{
+  "instruction_summary": "Policy-rules-only update of Immervoll-Kleven-Kreiner-Saez (EJ 2007): hold the paper's 1998 cell weights and closed-form formulas fixed, recompute tau and participation tax rates from EUROMOD J2.54+ on hypothetical households for 2009-2026 across 14 EU countries, and ask whether the in-work-transfer-beats-demogrant ranking still holds and how bottom-decile participation tax rates moved.",
+  "completed": true,
+  "steps": [
+    {"description": "Gate 0: install .NET 8 runtime + euromod 0.4.0; smoke-test AT_2025", "command": "dotnet-install --runtime dotnet --channel 8.0; uv pip install euromod==0.4.0 pandas; python gate0_smoke.py", "exit_code": 0, "outputs": ["AT_2025: 7482 persons, 446 vars, 0 errors, 12.8s"]},
+    {"description": "Gates 1-2: reproduce paper Table 2a through copied welfare_core.py (A2 fix)", "command": "python run_benchmark_table2a.py", "exit_code": 0, "outputs": ["max abs diff vs table2a.csv = 0"]},
+    {"description": "Headline EUROMOD runs: 14 countries x 18 years (less IE 2021) of cell rates tau,a_noUB,a_UB", "command": "python run_headline.py <CC> --root <root>", "exit_code": 0, "outputs": ["checkpoints/headline/*.csv (251 files)"]},
+    {"description": "Fix PTR denominator (labour-cost change, not total household) for working-spouse couples; re-run all", "command": "python run_headline.py (re-run)", "exit_code": 0, "outputs": ["corrected 251 checkpoints"]},
+    {"description": "Aggregate to decile profiles, welfare, critical eta; determine V4/q=0 headline regime", "command": "python aggregate.py", "exit_code": 0, "outputs": ["results/rates_cells.csv","results/rates_deciles.csv","results/welfare_by_year.csv","results/critical_eta_by_year.csv","results/headline_scalars.json"]},
+    {"description": "Gate 3 (OECD TaxBEN levels, no-UB + UB) and gate 3b (change gate) for 14 countries", "command": "python gate3.py / gate3b.py <CC> <root>", "exit_code": 0, "outputs": ["results/gate3_taxben.csv","results/gate3b_change.csv"]},
+    {"description": "Gate 3c (MTR add-on, tau validation) and gate 4 (J2.54+ beta vs J2.0+ stable, 2025)", "command": "python gate3c.py <CC> <root>; python run_headline.py <CC> --variant gate4_j20 --zip J2.0+", "exit_code": 0, "outputs": ["results/gate3c_mtr.csv","results/gate4_beta_vs_stable.csv"]},
+    {"description": "Probes: earnings variable, employer-SSC ratios, IE hours, DE Midijob", "command": "python probes.py; built into run_headline", "exit_code": 0, "outputs": ["results/input_conventions.csv"]},
+    {"description": "Figures and deliverables", "command": "python make_figures.py", "exit_code": 0, "outputs": ["results/fig1_decile_ptr_ladder.png","results/fig2_bottom_quintile_trajectory.png","results/fig3_welfare_ranking_2026.png","report.md","result_card.json"]}
+  ],
+  "key_results": {
+    "headline_regime": "V4 (q=0, no-UB panel) — 7 of 14 countries triggered no meaningful UB",
+    "Psi_w_lt_Psi_d_2026": "8 of 10 stable countries (ranking flipped to demogrant in IE, SE)",
+    "Psi_w_lt_1_2026": "4 of 10 stable (BE~0, DE, PT, LU~0)",
+    "pareto_2026": "4 of 10 stable (BE, DE, LU, PT)",
+    "median_bottom_quintile_PTR_change_2009_2026_Vdelta_pp": -3.2,
+    "largest_PTR_fall": "Denmark -24.3 pp (86.1 -> 61.8)",
+    "largest_PTR_rise": "Spain +42.7 pp (35.5 -> 78.2); Italy +39.5; Greece +25.3",
+    "central_finding": "Bottom-decile PTR/MTR approach 100% under 2009+ rules in single-earner hypothetical households (traps), destabilising the paper's closed-form Psi; decile profiles and bottom-quintile PTR change are the robust results",
+    "stable_Psi_countries_2026": ["BE","FI","FR","DE","EL","IE","IT","LU","PT","SE"],
+    "V_level_validated_noUB": ["DK","FR"],
+    "V_delta_change_validated": ["DK","FI","FR","LU","NL","SE"],
+    "gate0": "PASS", "gate1_2": "PASS exact", "gate3_noUB": "PASS DK,FR", "gate3b_change": "V_delta 6 countries",
+    "gate3c_MTR": "PASS 12/14", "gate4_beta_vs_stable": "PASS all 14 (median |da|<=0.27pp)",
+    "compute_core_hours": 0.7
+  },
+  "comparison_to_original": [
+    {"quantity": "Countries with Psi_w < Psi_d (in-work transfer cheaper)", "original": "14 of 14", "followup": "8 of 10 stable (2026)", "source_file": "run/replication/codebase/results/table2a.csv", "note": "paper's core qualitative finding survives where computable; flipped to demogrant in IE, SE"},
+    {"quantity": "Countries with Psi_w < 1", "original": "5 of 15 (DK, IE, FR, PT, ES)", "followup": "4 of 10 stable (BE~0, DE, PT, LU~0) (2026)", "source_file": "run/replication/codebase/results/table2a.csv + paper C5", "note": "set changed; mixes method/q-regime, see report"},
+    {"quantity": "Denmark efficiency of working-poor transfer (eff_w)", "original": "+1.65 (Pareto, 1998)", "followup": "-4.41 (2026, Psi unstable)", "source_file": "run/replication/codebase/results/table2a.csv", "note": "DK bottom-quintile PTR fell 24pp but Psi unstable due to residual traps"},
+    {"quantity": "Decile-1 participation tax rate, Austria", "original": "38.5% (1998)", "followup": "~93% employment-weighted (2026)", "source_file": "run/replication/codebase/figures/tax_rates_by_decile.csv", "note": "hypothetical single-earner traps; method break at 1998->2009 disclosed"},
+    {"quantity": "Table 2a anchor reproduction (gate 1)", "original": "table2a.csv", "followup": "max abs diff 0", "source_file": "run/replication/codebase/results/table2a.csv", "note": "formula layer reused exactly"}
+  ],
+  "artifacts": [
+    "results/report inputs: rates_cells.csv, rates_deciles.csv, welfare_by_year.csv, critical_eta_by_year.csv",
+    "results/headline_scalars.json, results/input_conventions.csv, results/compute_log.csv",
+    "results/gate3_taxben.csv, results/gate3b_change.csv, results/gate3c_mtr.csv, results/gate4_beta_vs_stable.csv",
+    "results/findings.md",
+    "results/fig1_decile_ptr_ladder.png, results/fig2_bottom_quintile_trajectory.png, results/fig3_welfare_ranking_2026.png"
+  ],
+  "deviations": [
+    "V4 (q=0) is the headline (pre-declared rule): 7 of 14 countries triggered no meaningful unemployment benefit in the hypothetical households.",
+    "a_UB uses direct construction (= HHoT_un switch) rather than the NRR add-on (which models an ~18-month exhausted spell); spouse earnings preserved (verified).",
+    "Psi (E2/E3/E4) reported only for the 10 'stable' countries in 2026 because bottom-decile traps (PTR/MTR ~ 1) destabilise the paper's closed form; this instability is itself the central finding.",
+    "Strict OECD level-validation (gate 3 no-UB) passes only for singles (V = {DK, FR}); the headline change is validated via gate 3b over V_delta = {DK, FI, FR, LU, NL, SE}.",
+    "Variants V3 (dispersion), V5 (rent=20%AW), V6 (one child), lhw=40, and the employer-SSC inversion were NOT executed (cut to protect the headline + all six gates, per the spec's ordering). V1 (CTR fixed) computed, headline unchanged (8/10).",
+    "Data fix: staged earn_nt_net 2024 values were monthly not annual (corrected and verified); 2026 AW uprated by the country XML $f_yem index.",
+    "EL and IT produce no employer SSC (ils_sicer=0) -> gross basis, flagged. IE 2021 missing (no hhot config), not interpolated. DE Midijob probe inconclusive (test points not aligned to XML band)."
+  ]
+}

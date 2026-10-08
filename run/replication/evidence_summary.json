@@ -1,0 +1,44 @@
+{
+  "paper": "Immervoll, Kleven, Kreiner & Saez (2007), 'Welfare Reform in European Countries: A Microsimulation Analysis', The Economic Journal 117(517):1-44",
+  "environment": {
+    "python_version": "3.12.8",
+    "gpu_available": true,
+    "gpu_model": "NVIDIA RTX A6000 (x4, 49140 MiB each) - not needed; analysis is lightweight closed-form algebra",
+    "key_packages": {"numpy": "2.5.3", "scipy": "1.18.1", "matplotlib": "3.11.2", "xlrd": "2.0.2"}
+  },
+  "codebase_provenance": "Shipped repo contained only EUROMOD.xls (20 sheets), cached CSV exports of each sheet, and one prep-check script (prep_checks/check_table2a.py). The table/figure driver scripts named in the plan did not exist and were written from scratch, re-implementing the paper's closed-form equations (15),(16),(18),(19) exactly as encoded in the shipped prep check.",
+  "steps": {
+    "step1_setup_and_prepcheck": {
+      "status": "success",
+      "detail": "Installed xlrd/numpy/scipy/matplotlib. EUROMOD.xls opens; all expected sheets present (Read Me, Aggregate Run, Disaggregate Run, Tax-Benefit Data_1998, 15 country sheets AT/BE/DK/FI/FR/GE/GR/IR/IT/LU/NL/PT/SP/SW/UK, WeightsGermany). prep_checks/check_table2a.py prints 15 country rows, no missing-sheet/file errors."
+    },
+    "step2_table2a_table7": {
+      "status": "success",
+      "match": "EXACT to paper Table 2(a) and Table 7 cols (1)-(2) at 2 decimals for all 15 countries.",
+      "examples": "AT -0.38/3.04/-0.08/1.50; DK -0.82/25.25/+1.65/0.00; SW -0.62/8.35/-0.17/4.36. Share gaining: AT pg=0.37 eg=0.50; DK 0.19/1.00 (match Table 7)."
+    },
+    "step3_table2b": {
+      "status": "success",
+      "match": "EXACT to paper Table 2(b). All 15 countries: Dd==Dw to <1e-9 (True), tradeoff_demogrant <= tradeoff_workingpoor (True). e.g. AT 0.16/1.57 (demo) 0.16/2.16 (wp)."
+    },
+    "step4_table4": {
+      "status": "success",
+      "match": "eps=0.1 block reproduces Table 2(a) exactly; eps=0 (panel a) and eps=0.2 (panel c) match paper Table 4. Paper's 'No Gainers'/'No Losers' degenerate cells (DK, and FI/SW/SP at eps=0.2) surface as NaN / negative-denominator trade-offs via the has_gainers flag."
+    },
+    "step5_table6": {
+      "status": "success",
+      "match": "Panel (a) reproduces Table 2(a). Panel (b) matches paper Table 6(b) closely (e.g. AT -0.29/2.31, -0.05/1.26; SW -0.42/4.30, -0.20/6.21; DK 'No Losers' -> NaN trade-off). DK demogrant trade-off 28.10 vs paper 29.09 (~3% gap; DK trade-off denominator is near-singular and hypersensitive).",
+      "note": "The plan's expected-outcome claim that the working-poor trade-off stays BELOW the demogrant trade-off in every country in panel (b) is contradicted by the paper's own Table 6(b): Finland (4.65>4.10), Italy (1.84>1.82) and Sweden (6.21>4.30) have WP trade-off ABOVE demogrant, due to their very compressed earnings distributions. The reproduction faithfully matches the paper, not the plan's simplification."
+    },
+    "step6_table3": {
+      "status": "success",
+      "match": "ALL 45 values (15 countries x 3 critical elasticities) match paper Table 3 to 2 decimals. crit_identical<crit_zeroloss<crit_pareto holds for every country. Pareto condition implemented as 1-Dw = max_j(s_j/e_j) (richest worker just gains -> no losers -> Psi_w->0)."
+    },
+    "step7_figures": {
+      "status": "success",
+      "detail": "figure1_marginal_tax_rates.pdf and figure2_participation_tax_rates.pdf, each 3 stacked panels (Nordic / Continental / Anglo-Saxon-Southern), deciles 1-10, one labelled line per country. tax_rates_by_decile.csv has 150 rows. Data read from 'Tax-Benefit Data_1998' sheet, 'Without Consumption Taxes' columns. Patterns match paper (Nordic high marginal rates; DK participation tax falls 77->60% across deciles).",
+      "caveat": "Per plan: these tax rates are the shipped EUROMOD-computed inputs; EUROMOD cannot be re-run from restricted micro-data in this container, so figures plot the workbook's tax-rate data (as the plan specifies)."
+    }
+  },
+  "overall": "All 7 steps reproduced. Tables 2a, 2b, 3, 4, 6 and Table 7 cols 1-2, plus Figures 1-2, all reproduce the paper's published values (Table 3: all 45 cells exact to 2dp; Tables 2a/2b exact; Table 6b within rounding except hypersensitive DK demogrant)."
+}

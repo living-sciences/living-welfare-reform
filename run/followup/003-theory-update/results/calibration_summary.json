@@ -1,0 +1,23 @@
+{
+  "crit_1998": {
+    "identical": 0.143,
+    "zeroloss": 0.377,
+    "pareto": 0.416
+  },
+  "crit_2026": {
+    "identical": 0.127,
+    "zeroloss": 0.39,
+    "pareto": 0.919
+  },
+  "a12_1998": 69.7,
+  "a12_2026": 49.8,
+  "gshare_1998": 0.0,
+  "gshare_2026": 0.0,
+  "panel": [
+    "FI",
+    "FR",
+    "EL",
+    "IT",
+    "SE"
+  ]
+}

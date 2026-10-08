@@ -1,0 +1,23 @@
+{
+  "run_2026_10_05": "Three gate completions attempted in-session with EUROMOD J2.54+ (beta), euromod 0.4.0, .NET 8.0.31, identical household-construction code copied from 001's workspace (hh_engine.py, gate3.py, gate3c.py).",
+  "nl_gate3_level": {
+    "spec_ref": "instruction section 2.1",
+    "status": "COMPLETED - PASS",
+    "detail": "NL no-UB leg: n=48 comparisons, within-5pp share 0.92 (>=0.75) and 0 MINW/S_C2 cells off by >10pp => PASS. UB leg FAIL (within 0.29) - moot under V4. Housing variant NO (chosen on S_C0 AW67 2015).",
+    "consequence": "NL ENTERS the validated set V. V = {DK, FR, NL}, |V| = 3.",
+    "artifact": "gate3_NL_completion.csv (96 rows: 4 years x 4 cells x 3 incomes x 2 legs)"
+  },
+  "fr_el_gate3c_mtr": {
+    "spec_ref": "instruction section 2.2",
+    "status": "FAILED on retry (both)",
+    "detail": "FR and EL MTR add-on re-run once each (2010 and 2025): all four simulations aborted with 'Simulation for system <CC>_<YYYY> with dataset <CC>_<YYYY>_hhot aborted with errors.' - identical to the original studies' failure. No rows produced.",
+    "consequence": "FR and EL remain 'tau unvalidated' at gate 3c; flagged wherever their MTR/tau-based numbers appear (E2, E4, and the 003 frontier panel).",
+    "artifact": "gate3c_FR_EL_completion.csv (header only; both aborted)"
+  },
+  "table5b_transcription": {
+    "spec_ref": "instruction section 2.3",
+    "status": "COMPLETED",
+    "detail": "Paper Table 5(b) 'Benchmark scenario without benefits' transcribed from paper.pdf page 31, double-read at 200 dpi (transcription-fidelity rule).",
+    "artifact": "baseline_1998_noUB.csv"
+  }
+}

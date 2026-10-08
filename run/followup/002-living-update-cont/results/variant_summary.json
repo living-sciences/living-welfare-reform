@@ -1,0 +1,27 @@
+{
+  "V5": {
+    "mean_abs_delta_a12_pp": 0.68,
+    "max_abs_delta_a12_pp": 6.35,
+    "n": 56
+  },
+  "V6": {
+    "mean_abs_delta_a12_pp": 0.74,
+    "max_abs_delta_a12_pp": 3.77,
+    "n": 56
+  },
+  "lhw40": {
+    "mean_abs_delta_a12_pp": 1.83,
+    "max_abs_delta_a12_pp": 20.93,
+    "n": 56
+  },
+  "V3": {
+    "mean_abs_delta_a12_pp": 3.06,
+    "max_abs_delta_a12_pp": 12.28,
+    "n": 56
+  },
+  "ssc_inv": {
+    "mean_abs_delta_a12_pp": 0.2,
+    "max_abs_delta_a12_pp": 1.52,
+    "n": 14
+  }
+}

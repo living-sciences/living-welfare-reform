@@ -1,0 +1,73 @@
+{
+  "schema": "sai.followup.result_card/v1",
+  "headline": "Under 2026 tax-benefit rules the paper's result holds where computable — a revenue-neutral in-work transfer still beats a demogrant (Ψ_w < Ψ_d) in 8 of 10 countries with a well-defined trade-off — but bottom-quintile participation tax rates have diverged sharply, falling 24 pp in Denmark while rising 40+ pp in Spain and Italy as they built minimum-income floors.",
+  "status": "partial",
+  "metrics": [
+    {"label": "Countries where in-work transfer beats demogrant (Ψ_w < Ψ_d), 2026",
+     "value": "8 of 10 stable", "baseline": "14 of 14",
+     "baseline_label": "1998 paper (replication table2a.csv, mixed-q)",
+     "note": "ranking flipped to the demogrant only in Ireland and Sweden; 4 of 14 countries have numerically unstable Ψ (bottom-decile traps) and are excluded from the count"},
+    {"label": "Median bottom-quintile PTR change 2009→2026 (change-validated set V_Δ, 6 countries)",
+     "value": "-3.2 pp", "baseline": "n/a",
+     "baseline_label": "no same-definition 1998 no-UB baseline (V4 headline)",
+     "note": "V_Δ = {DK, FI, FR, LU, NL, SE}, validated against OECD TaxBEN change at gate 3b"},
+    {"label": "Largest bottom-quintile PTR fall (Denmark), 2009→2026",
+     "value": "61.8% (−24.3 pp)", "baseline": "86.1%",
+     "baseline_label": "2009 rules, this study",
+     "note": "2020s employment-deduction (beskæftigelsesfradrag) increases"},
+    {"label": "Largest bottom-quintile PTR rise (Spain), 2009→2026",
+     "value": "78.2% (+42.7 pp)", "baseline": "35.5%",
+     "baseline_label": "2009 rules, this study",
+     "note": "Ingreso Mínimo Vital (2021-23) raised out-of-work income; Italy +40, Greece +25 similarly"},
+    {"label": "Countries with Ψ_w < 1 (in-work transfer as cheap as the demogrant benchmark), 2026",
+     "value": "4 of 10 stable", "baseline": "5 of 15",
+     "baseline_label": "1998 paper (DK, IE, FR, PT, ES)",
+     "note": "2026 stable: BE≈0, DE, PT, LU≈0"}
+  ],
+  "tables": [
+    {"title": "Equity–efficiency trade-off and bottom-quintile PTR, 2026 (V4 / q=0)",
+     "columns": ["Country", "Ψ_w", "Ψ_d", "in-work cheaper?", "bottom-quintile PTR %", "Ψ stable?"],
+     "rows": [
+       ["Denmark", "n/a", "n/a", "—", "61.8", "no"],
+       ["France", "2.14", "3.05", "yes", "55.3", "yes"],
+       ["Germany", "0.71", "2.39", "yes", "68.6", "yes"],
+       ["Finland", "2.45", "4.33", "yes", "64.0", "yes"],
+       ["Sweden", "3.11", "2.90", "no (flip)", "47.2", "yes"],
+       ["Ireland", "2.57", "2.13", "no (flip)", "20.3", "yes"],
+       ["Italy", "1.56", "2.42", "yes", "49.8", "yes"],
+       ["Belgium", "0.00", "4.66", "yes (Pareto)", "74.4", "yes"],
+       ["Spain", "n/a", "n/a", "—", "78.2", "no"],
+       ["Portugal", "0.40", "2.19", "yes", "69.7", "yes"]],
+     "highlight_row": 0},
+    {"title": "Validation gates",
+     "columns": ["Gate", "Result"],
+     "rows": [
+       ["0 Environment / EUROMOD runs", "PASS (AT_2025 7,482 persons, 0 errors)"],
+       ["1-2 Formula anchor (Table 2a)", "PASS exact (max diff 0)"],
+       ["3 Levels no-UB vs OECD TaxBEN", "PASS DK, FR (singles match); lone-parent/EL offsets fail"],
+       ["3b Change gate vs OECD", "V_Δ = DK, FI, FR, LU, NL, SE pass"],
+       ["3c MTR / τ vs add-on", "PASS 12/14 (median ≤0.55 pp)"],
+       ["4 Beta vs J2.0+ stable", "PASS all 14 (median |Δa| ≤0.27 pp)"]],
+     "highlight_row": 0}
+  ],
+  "figures": [
+    {"file": "results/fig1_decile_ptr_ladder.png",
+     "caption": "Participation tax rate by earnings decile for 1998 (paper, gray markers), 2009 and 2026 rules, per country. Bottom-decile PTRs sit well above the 1998 survey values for most countries; Spain, Italy and Greece show steep bottom-decile increases from new minimum-income schemes.",
+     "alt": "4x4 small-multiples line charts, one per country, PTR versus decile 1-10, three series 1998/2009/2026"},
+    {"file": "results/fig2_bottom_quintile_trajectory.png",
+     "caption": "Bottom-quintile participation tax rate 2009–2026 (with the 1998 paper value as a separate marker). Solid lines are change-validated (gate 3b); Denmark falls sharply while Spain, Italy and Greece jump around 2020.",
+     "alt": "Line chart of bottom-quintile PTR percent against year 2009-2026 for 14 countries, with 1998 markers at left"},
+    {"file": "results/fig3_welfare_ranking_2026.png",
+     "caption": "2026 equity–efficiency trade-off: Ψ_w (in-work transfer) versus Ψ_d (demogrant) for the 10 countries with stable Ψ. 8 of 10 lie below the 45° line, i.e. the in-work transfer is cheaper; Ireland and Sweden have flipped above it.",
+     "alt": "Log-log scatter of Psi_w against Psi_d with a 45-degree line and a Psi_w=1 reference line, countries labelled"}
+  ],
+  "notes": [
+    "Policy-rules-only update: the paper's 1998 cell weights and formulas are held fixed; only EUROMOD tax-benefit rules change (J2.54+ beta), on hypothetical households, 14 countries, 2009-2026. UK out of scope.",
+    "Central finding and caveat: bottom-decile PTRs/MTRs now approach 100% in single-earner hypothetical households (genuine traps), which destabilises the paper's closed-form Ψ (it divides by 1-rate). Ψ is reported only for the 10 'stable' countries; the robust results are the decile PTR profiles and the bottom-quintile PTR change.",
+    "V4 (q=0, no-UB panel) is the headline because 7 of 14 countries triggered no meaningful unemployment benefit in the hypothetical households (pre-declared rule).",
+    "Strict OECD level-validation holds for singles (set V = {DK, FR}); lone-parent and two-earner cells diverge. The headline is a CHANGE, so country-constant offsets cancel and gate 3b validates the change for V_Δ (6 countries).",
+    "Not executed (cut to protect the headline + all six gates): variants V3 (dispersion), V5 (rent=20% AW), V6 (one child), lhw=40, employer-SSC inversion. V1 (CTR fixed) computed and leaves the headline unchanged.",
+    "Data fix: staged earn_nt_net 2024 values were monthly not annual (corrected); 2026 AW uprated by the XML $f_yem index."
+  ],
+  "report_file": "report.md"
+}

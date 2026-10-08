@@ -1,0 +1,92 @@
+{
+  "AT": {
+    "country": "AT",
+    "crit_identical": 0.06908127254674756,
+    "crit_zeroloss": 0.3161077054622147,
+    "crit_pareto": 0.5684350485089132
+  },
+  "BE": {
+    "country": "BE",
+    "crit_identical": 0.09519042150217567,
+    "crit_zeroloss": 0.27497313396306045,
+    "crit_pareto": 0.3839483367142716
+  },
+  "DK": {
+    "country": "DK",
+    "crit_identical": 0.04488449479493139,
+    "crit_zeroloss": 0.13507187261569467,
+    "crit_pareto": 0.1987659412501513
+  },
+  "FI": {
+    "country": "FI",
+    "crit_identical": 0.1718166544634078,
+    "crit_zeroloss": 0.3774670426867511,
+    "crit_pareto": 0.41576041735350133
+  },
+  "FR": {
+    "country": "FR",
+    "crit_identical": 0.0480764717106316,
+    "crit_zeroloss": 0.17055527937140297,
+    "crit_pareto": 0.3441730532321571
+  },
+  "GE": {
+    "country": "GE",
+    "crit_identical": 0.07678170229800009,
+    "crit_zeroloss": 0.31828223645318793,
+    "crit_pareto": 0.44036755303207786
+  },
+  "GR": {
+    "country": "GR",
+    "crit_identical": 0.09939034838228879,
+    "crit_zeroloss": 0.38420090393295714,
+    "crit_pareto": 1.1429050404057937
+  },
+  "IR": {
+    "country": "IR",
+    "crit_identical": 0.032084122530832995,
+    "crit_zeroloss": 0.10492212213510846,
+    "crit_pareto": 0.32851105805778313
+  },
+  "IT": {
+    "country": "IT",
+    "crit_identical": 0.18486786355807033,
+    "crit_zeroloss": 0.4471924861946301,
+    "crit_pareto": 0.7978149662545351
+  },
+  "LU": {
+    "country": "LU",
+    "crit_identical": 0.07043764291690185,
+    "crit_zeroloss": 0.32907008154643186,
+    "crit_pareto": 0.8717761312199344
+  },
+  "NL": {
+    "country": "NL",
+    "crit_identical": 0.06416513323403171,
+    "crit_zeroloss": 0.28464473991941697,
+    "crit_pareto": 0.5724324073850163
+  },
+  "PT": {
+    "country": "PT",
+    "crit_identical": 0.03360276776697653,
+    "crit_zeroloss": 0.19628378976820807,
+    "crit_pareto": 0.6180164059538009
+  },
+  "SP": {
+    "country": "SP",
+    "crit_identical": 0.054714830651084026,
+    "crit_zeroloss": 0.19473938621873707,
+    "crit_pareto": 0.9581988401770426
+  },
+  "SW": {
+    "country": "SW",
+    "crit_identical": 0.14270169923820494,
+    "crit_zeroloss": 0.3123046695770824,
+    "crit_pareto": 0.35944024348090353
+  },
+  "UK": {
+    "country": "UK",
+    "crit_identical": 0.04041447649244564,
+    "crit_zeroloss": 0.2276579032280523,
+    "crit_pareto": 0.8232028240876265
+  }
+}

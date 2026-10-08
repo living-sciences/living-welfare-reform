@@ -1,0 +1,137 @@
+{
+  "AT": {
+    "country": "AT",
+    "eff_demogrant": -0.37590946889593657,
+    "tradeoff_demogrant": 3.039278384973831,
+    "eff_workingpoor": -0.08430731560490834,
+    "tradeoff_workingpoor": 1.4982571715887802,
+    "share_pop_gaining_demogrant": 0.37259603997839025,
+    "share_emp_gaining_workingpoor": 0.49948745648902176
+  },
+  "BE": {
+    "country": "BE",
+    "eff_demogrant": -0.5707857513040795,
+    "tradeoff_demogrant": 4.834748226573602,
+    "eff_workingpoor": -0.13521259415212517,
+    "tradeoff_workingpoor": 1.9303045608251557,
+    "share_pop_gaining_demogrant": 0.3913291514460719,
+    "share_emp_gaining_workingpoor": 0.49099382290772675
+  },
+  "DK": {
+    "country": "DK",
+    "eff_demogrant": -0.8231047833553419,
+    "tradeoff_demogrant": 25.25221745157709,
+    "eff_workingpoor": 1.6543369984950789,
+    "tradeoff_workingpoor": -1.5143535314621204e-09,
+    "share_pop_gaining_demogrant": 0.19186138821232257,
+    "share_emp_gaining_workingpoor": 1.0
+  },
+  "FI": {
+    "country": "FI",
+    "eff_demogrant": -0.5821851473776432,
+    "tradeoff_demogrant": 6.168035000447428,
+    "eff_workingpoor": -0.20948227864602542,
+    "tradeoff_workingpoor": 4.92826297049664,
+    "share_pop_gaining_demogrant": 0.2696198116498082,
+    "share_emp_gaining_workingpoor": 0.3980626502971866
+  },
+  "FR": {
+    "country": "FR",
+    "eff_demogrant": -0.508455256871489,
+    "tradeoff_demogrant": 4.318972720146476,
+    "eff_workingpoor": 0.06517657349058759,
+    "tradeoff_workingpoor": 0.7607527399432734,
+    "share_pop_gaining_demogrant": 0.3686847217414742,
+    "share_emp_gaining_workingpoor": 0.6998153651112767
+  },
+  "GE": {
+    "country": "GE",
+    "eff_demogrant": -0.5012641346548076,
+    "tradeoff_demogrant": 4.375493702414404,
+    "eff_workingpoor": -0.12396436992253523,
+    "tradeoff_workingpoor": 1.8864022942079168,
+    "share_pop_gaining_demogrant": 0.3366009303551477,
+    "share_emp_gaining_workingpoor": 0.40179762065426555
+  },
+  "GR": {
+    "country": "GR",
+    "eff_demogrant": -0.20626376283537767,
+    "tradeoff_demogrant": 1.662423629295628,
+    "eff_workingpoor": -0.054975453911923045,
+    "tradeoff_workingpoor": 1.2935289379195154,
+    "share_pop_gaining_demogrant": 0.48206583027438016,
+    "share_emp_gaining_workingpoor": 0.5998811758909984
+  },
+  "IR": {
+    "country": "IR",
+    "eff_demogrant": -0.38673721583000975,
+    "tradeoff_demogrant": 2.734264964820966,
+    "eff_workingpoor": 0.26302947857617887,
+    "tradeoff_workingpoor": 0.3859674808874418,
+    "share_pop_gaining_demogrant": 0.4556263282498031,
+    "share_emp_gaining_workingpoor": 0.7184594325607442
+  },
+  "IT": {
+    "country": "IT",
+    "eff_demogrant": -0.32397369063584097,
+    "tradeoff_demogrant": 2.0712646089702673,
+    "eff_workingpoor": -0.11798041866067666,
+    "tradeoff_workingpoor": 1.957320504865994,
+    "share_pop_gaining_demogrant": 0.4966348130572302,
+    "share_emp_gaining_workingpoor": 0.49755368447439974
+  },
+  "LU": {
+    "country": "LU",
+    "eff_demogrant": -0.25634982664414996,
+    "tradeoff_demogrant": 1.9824769224667949,
+    "eff_workingpoor": -0.06141808767188495,
+    "tradeoff_workingpoor": 1.2890633322901546,
+    "share_pop_gaining_demogrant": 0.4464956048492875,
+    "share_emp_gaining_workingpoor": 0.5997352021300095
+  },
+  "NL": {
+    "country": "NL",
+    "eff_demogrant": -0.3596226948492321,
+    "tradeoff_demogrant": 2.880833946294592,
+    "eff_workingpoor": -0.06663834346476993,
+    "tradeoff_workingpoor": 1.3729720192151806,
+    "share_pop_gaining_demogrant": 0.3910205747703228,
+    "share_emp_gaining_workingpoor": 0.4998935179023027
+  },
+  "PT": {
+    "country": "PT",
+    "eff_demogrant": -0.29024827596180147,
+    "tradeoff_demogrant": 2.3418240365110154,
+    "eff_workingpoor": 0.0035057627669794478,
+    "tradeoff_workingpoor": 0.9876349540837047,
+    "share_pop_gaining_demogrant": 0.40072671457439357,
+    "share_emp_gaining_workingpoor": 0.6995415607367212
+  },
+  "SP": {
+    "country": "SP",
+    "eff_demogrant": -0.1870017666162647,
+    "tradeoff_demogrant": 1.52195780326695,
+    "eff_workingpoor": 0.0022452214971420137,
+    "tradeoff_workingpoor": 0.990565027915548,
+    "share_pop_gaining_demogrant": 0.5301484794912195,
+    "share_emp_gaining_workingpoor": 0.5914769023369891
+  },
+  "SW": {
+    "country": "SW",
+    "eff_demogrant": -0.619272141196514,
+    "tradeoff_demogrant": 8.348898819797617,
+    "eff_workingpoor": -0.17037939652943268,
+    "tradeoff_workingpoor": 4.364003656965881,
+    "share_pop_gaining_demogrant": 0.2213322091062394,
+    "share_emp_gaining_workingpoor": 0.39973454751843096
+  },
+  "UK": {
+    "country": "UK",
+    "eff_demogrant": -0.22455560170287123,
+    "tradeoff_demogrant": 1.8794416718510814,
+    "eff_workingpoor": -0.014519765150957209,
+    "tradeoff_workingpoor": 1.060184285032006,
+    "share_pop_gaining_demogrant": 0.4666693614764325,
+    "share_emp_gaining_workingpoor": 0.5998915466312651
+  }
+}
